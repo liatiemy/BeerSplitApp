@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Beer Split</string>
+    <string name="login">Login</string>
+    <string name="hint_login">Informe o login</string>
+    <string name="password">Password</string>
+    <string name="hint_senha">Informe a senha</string>
+    <string name="log_in">Log in</string>
+    <string name="manter_conectado">Manter-me conectado</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="facebook_app_id">475406189494034</string>
+    <string name="fb_login_protocol_scheme">fb475406189494034</string>
+
+    <string name="title_activity_beer_map">Map</string>
+
+    <string name="main">The best way to split the bill equally with your friends at a bar, pub or restaurant.
+        \n We help you to calculate everything and do not waste time calculating tips.
+        \n \n Do not miss it! Start your own Round registry right away!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
