@@ -53,18 +53,25 @@ public class BeerMapActivity extends FragmentActivity implements OnMapReadyCallb
             new GoogleMap.OnMyLocationButtonClickListener() {
         @Override
         public boolean onMyLocationButtonClick() {
-            LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+            /*LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
             Criteria criteria = new Criteria();
             String provider = service.getBestProvider(criteria, false);
 
-            //BUILD_MAP = false;
-            //checkPermission();
+            BUILD_MAP = false;
+            checkPermission();
 
-            //Location location = service.getLastKnownLocation(provider);
-            //LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            Location location = service.getLastKnownLocation(provider);
+            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
 
-            //mMap.addMarker(new MarkerOptions().position(loc).title("NOVO"));
-            //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 17));
+            mMap.addMarker(new MarkerOptions().position(loc).title("NOVO"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 17));*/
+
+
+            //teste da aula
+            LatLng latlng = new LatLng(-23.5583107, -46.6659817); //teste O'malley's
+            mMap.addMarker(new MarkerOptions().position(latlng).title("O'Malley's"));
+            if(latlng!=null)
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 11));
 
             return true;
         }

@@ -17,6 +17,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -63,7 +64,12 @@ public class LoginActivity extends AppCompatActivity {
         login_facebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(getApplicationContext(), "login com sucesso FB", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "login com sucesso FB", Toast.LENGTH_SHORT).show();
+                if (cbConectado.isChecked()) {
+                    String login = "userFB";
+                    String password = "passFB";
+                    keepConected(login, password);
+                }
                 iniciarApp();
             }
 
@@ -84,20 +90,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logar(View view) {
-        if (isValidLogin()) {
+        String login = etLogin.getText().toString();
+        String password = etSenha.getText().toString();
+        if (isValidLogin(login, password)) {
             if (cbConectado.isChecked()) {
-                keepConected();
+                keepConected(login, password);
             }
             iniciarApp();
         }
     }
 
-    public boolean isValidLogin(){
-        String login = etLogin.getText().toString();
-        String senha = etSenha.getText().toString();
-
+    public boolean isValidLogin(String login, String password){
         usuario.setUsuario(login);
-        usuario.setSenha(senha);
+        usuario.setSenha(password);
         if(usuarioDAO.getByUsername(usuario)){
             //Toast.makeText(this, "Usuário ou senha válidos", Toast.LENGTH_SHORT).show();
             return true;
@@ -107,9 +112,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void keepConected(){
-        String login = etLogin.getText().toString();
-        String password = etSenha.getText().toString();
+    public void keepConected(String login, String password){
+
         SharedPreferences sp = getSharedPreferences(KEY_APP_PREFERENCES, MODE_PRIVATE);
         sp.registerOnSharedPreferenceChangeListener(callback);
         SharedPreferences.Editor editor = sp.edit();
@@ -140,6 +144,8 @@ public class LoginActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences(KEY_APP_PREFERENCES, MODE_PRIVATE);
         sp.unregisterOnSharedPreferenceChangeListener(callback);
+        if(!isConected())
+            LoginManager.getInstance().logOut();
     }
 
     @Override

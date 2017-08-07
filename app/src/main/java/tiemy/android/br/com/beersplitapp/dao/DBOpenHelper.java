@@ -6,21 +6,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import android.content.Context;
-import android.content.res.Resources;
+
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 import tiemy.android.br.com.beersplitapp.R;
 
 public class DBOpenHelper extends SQLiteOpenHelper{
 
     private static final String DB_NAME = "beersplit.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 3;
 
     private Context ctx;
 
@@ -38,6 +35,8 @@ public class DBOpenHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS users");
+        sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS expenses");
+        sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS rounds");
         onCreate(sqLiteDatabase);
     }
 

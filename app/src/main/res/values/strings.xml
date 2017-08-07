@@ -15,7 +15,7 @@
     <string name="facebook_app_id">475406189494034</string>
     <string name="fb_login_protocol_scheme">fb475406189494034</string>
 
-    <string name="title_activity_beer_map">Map</string>
+    <string name="title_activity_beer_map">Beer Split Map</string>
 
     <string name="main">The best way to split the bill equally with your friends at a bar, pub or restaurant.
         \n We help you to calculate everything and do not waste time calculating tips.

@@ -69,9 +69,12 @@
             android:label="Round Register" />
         <activity
             android:name=".LocalNameActivity"
-            android:label="Beer Split - Loca; Name" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".RoundActivity"></activity>
+            android:label="Local Name" />
+        <activity
+            android:name=".HistoryActivity"
+            android:label="Beer Split History" />
+        <activity android:name=".RoundActivity" />
+        <activity android:name=".AmountOfPeopleActivity"></activity>
     </application>
 
 </manifest>

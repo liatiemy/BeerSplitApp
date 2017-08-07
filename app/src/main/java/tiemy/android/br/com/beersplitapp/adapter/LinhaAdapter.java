@@ -33,7 +33,7 @@ public class LinhaAdapter extends RecyclerView.Adapter<LinhaAdapter.LinhaViewHol
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         //false eh apenas para inflar, mas ainda nao tem nada para renderizar/aparecer
-        View meuLayout = inflater.inflate(R.layout.row, parent, false);
+        View meuLayout = inflater.inflate(R.layout.row_round_register, parent, false);
 
         return new LinhaViewHolder(meuLayout);
     }

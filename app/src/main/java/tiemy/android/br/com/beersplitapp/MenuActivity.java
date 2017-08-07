@@ -95,7 +95,7 @@ public class MenuActivity extends AppCompatActivity
                 startActivity(new Intent(this, RoundRegisterActivity.class));
                 break;
             case R.id.history:
-                startActivity(new Intent(this, RoundRegisterActivity.class));
+                startActivity(new Intent(this, HistoryActivity.class));
                 break;
             case R.id.beer_map:
                 startActivity(new Intent(this, BeerMapActivity.class));

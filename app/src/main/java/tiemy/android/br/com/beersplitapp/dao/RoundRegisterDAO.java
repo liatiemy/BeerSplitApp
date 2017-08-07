@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import tiemy.android.br.com.beersplitapp.model.RoundRegister;
-import tiemy.android.br.com.beersplitapp.model.Usuario;
 
 public class RoundRegisterDAO {
     private DBOpenHelper banco;
@@ -19,7 +18,7 @@ public class RoundRegisterDAO {
         banco = new DBOpenHelper(context);
     }
 
-    public static final String TABLE_ROUND = "round";
+    public static final String TABLE_ROUND = "rounds";
     public static final String COLUMN_ID_ROUND = "id_round";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_PEOPLE = "people";
