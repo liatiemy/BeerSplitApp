@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="@dimen/largura_logo_splash"
+        android:layout_height="@dimen/altura_logo_splash"
+        android:id="@+id/splash"
+        android:background="@drawable/beersplit" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:padding="@dimen/activity_vertical_margin"
+        android:text="You still don't have a round register. \nLet's start your first now!"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Registry round"
+        android:onClick="registry"/>
+
+</LinearLayout>
