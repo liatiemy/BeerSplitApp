@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="How namy people are going to split the bill?"/>
+        android:text="How many people are going to split the bill?"/>
 
     <EditText
         android:layout_width="match_parent"

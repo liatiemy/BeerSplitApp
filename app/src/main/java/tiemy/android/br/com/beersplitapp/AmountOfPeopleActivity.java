@@ -19,10 +19,12 @@ public class AmountOfPeopleActivity extends AppCompatActivity {
     }
 
     public void btNumber(View view){
+        int number =0;
         etNumberPeople = (EditText) findViewById(R.id.etNumberPeople);
-
+        if(!etNumberPeople.getText().toString().equals(""))
+             number = Integer.parseInt(etNumberPeople.getText().toString());
         Intent intent = new Intent();
-        intent.putExtra("numberPeople", etNumberPeople.getText().toString());
+        intent.putExtra("numberPeople", String.valueOf(number));
         setResult(Activity.RESULT_OK, intent);
         finish();
 

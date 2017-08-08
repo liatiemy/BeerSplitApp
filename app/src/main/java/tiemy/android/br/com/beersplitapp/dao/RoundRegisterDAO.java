@@ -3,6 +3,7 @@ package tiemy.android.br.com.beersplitapp.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.LinkedList;
@@ -90,4 +91,9 @@ public class RoundRegisterDAO {
         return roundRegister;
     }
 
+    public int getLastIdRound() {
+        int lastId = 1;
+        SQLiteDatabase db = banco.getReadableDatabase();
+        return (int) DatabaseUtils.queryNumEntries(db,TABLE_ROUND);
+    }
 }

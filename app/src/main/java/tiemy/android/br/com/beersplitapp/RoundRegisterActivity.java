@@ -23,6 +23,8 @@ public class RoundRegisterActivity extends AppCompatActivity{
     RecyclerView recyclerView ;
     private LinhaAdapter linhaAdapter;
     private RoundRegister roundRegister;
+    private RoundRegisterDAO roundRegisterDAO = new RoundRegisterDAO(this);
+    int ultimoRoundCadastrado;
 
     static final int LOCAL_NAME_REQUEST = 1;
     static final int AMOUNT_PEOPLE_REQUEST = 2;
@@ -36,15 +38,17 @@ public class RoundRegisterActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_register);
 
-        roundRegister = new RoundRegister();
-
         recyclerView = (RecyclerView) findViewById(R.id.list);
 
         linhaAdapter = new LinhaAdapter(new ArrayList<String>(), new OnItemClickListenter() {
             @Override
             public void onItemClick(String item) {
                 //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+
+                ultimoRoundCadastrado = roundRegisterDAO.getLastIdRound()+1;
                 roundRegister = new RoundRegister();
+                roundRegister.setId_round(ultimoRoundCadastrado);
+
                 switch (item){
                     case "Local Name":
                         Intent intent = new Intent(getApplicationContext(), LocalNameActivity.class);
@@ -55,7 +59,9 @@ public class RoundRegisterActivity extends AppCompatActivity{
                         startActivityForResult(intent2, AMOUNT_PEOPLE_REQUEST);
                         break;
                     case "Expenses":
-                        startActivity(new Intent(RoundRegisterActivity.this, LocalNameActivity.class));
+                        Intent intent3 = new Intent(RoundRegisterActivity.this, LocalNameActivity.class);
+                        intent3.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
+                        startActivity(intent3);
                         break;
                     case "Total":
                         startActivity(new Intent(RoundRegisterActivity.this, LocalNameActivity.class));
@@ -90,13 +96,13 @@ public class RoundRegisterActivity extends AppCompatActivity{
         if (requestCode == LOCAL_NAME_REQUEST) {
             if (resultCode == RESULT_OK) {
                 roundRegister.setName(data.getStringExtra("localName").toString());
-                Toast.makeText(this, "localName: " + roundRegister.getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "localName: " + roundRegister.getName(), Toast.LENGTH_SHORT).show();
             }
         }
         if (requestCode == AMOUNT_PEOPLE_REQUEST) {
             if (resultCode == RESULT_OK) {
                 roundRegister.setPeople(Integer.parseInt(data.getStringExtra("numberPeople")));
-                Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
             }
         }
     }
