@@ -74,7 +74,9 @@
             android:name=".HistoryActivity"
             android:label="Beer Split History" />
         <activity android:name=".RoundActivity" />
-        <activity android:name=".AmountOfPeopleActivity"></activity>
+        <activity android:name=".AmountOfPeopleActivity" />
+        <activity android:name=".ExpensesActivity" />
+        <activity android:name=".ExpenseActivity"></activity>
     </application>
 
 </manifest>

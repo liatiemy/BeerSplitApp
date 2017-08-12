@@ -18,7 +18,7 @@ public class ExpenseDAO {
         banco = new DBOpenHelper(context);
     }
 
-    public static final String TABLE_EXPENSE = "expense";
+    public static final String TABLE_EXPENSE = "expenses";
     public static final String COLUMN_ID_ROUND = "id_round";
     public static final String COLUMN_NAME = "nameExpense";
     public static final String COLUMN_PRICE = "price";

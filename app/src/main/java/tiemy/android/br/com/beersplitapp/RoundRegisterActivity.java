@@ -59,7 +59,7 @@ public class RoundRegisterActivity extends AppCompatActivity{
                         startActivityForResult(intent2, AMOUNT_PEOPLE_REQUEST);
                         break;
                     case "Expenses":
-                        Intent intent3 = new Intent(RoundRegisterActivity.this, LocalNameActivity.class);
+                        Intent intent3 = new Intent(RoundRegisterActivity.this, ExpensesActivity.class);
                         intent3.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
                         startActivity(intent3);
                         break;
