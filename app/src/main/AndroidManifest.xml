@@ -76,7 +76,9 @@
         <activity android:name=".RoundActivity" />
         <activity android:name=".AmountOfPeopleActivity" />
         <activity android:name=".ExpensesActivity" />
-        <activity android:name=".ExpenseActivity"></activity>
+        <activity android:name=".ExpenseActivity" />
+        <activity android:name=".ExpenseUpdateActivity" />
+        <activity android:name=".TotalActivity"></activity>
     </application>
 
 </manifest>

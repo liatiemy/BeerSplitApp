@@ -2,6 +2,7 @@ package tiemy.android.br.com.beersplitapp.model;
 
 public class Expense {
 
+    private int _id;
     private int id_round;
     private String nameExpense;
     private double price;
@@ -37,5 +38,13 @@ public class Expense {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getId_row() {
+        return _id;
+    }
+
+    public void setId_row(int rowid) {
+        this._id = rowid;
     }
 }

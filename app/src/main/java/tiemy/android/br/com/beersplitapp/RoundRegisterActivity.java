@@ -49,6 +49,7 @@ public class RoundRegisterActivity extends AppCompatActivity{
                 roundRegister = new RoundRegister();
                 roundRegister.setId_round(ultimoRoundCadastrado);
 
+
                 switch (item){
                     case "Local Name":
                         Intent intent = new Intent(getApplicationContext(), LocalNameActivity.class);
@@ -64,7 +65,11 @@ public class RoundRegisterActivity extends AppCompatActivity{
                         startActivity(intent3);
                         break;
                     case "Total":
-                        startActivity(new Intent(RoundRegisterActivity.this, LocalNameActivity.class));
+                        Intent intent4 = new Intent(RoundRegisterActivity.this, TotalActivity.class);
+                        intent4.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
+                        intent4.putExtra("localName", roundRegister.getName());
+                        intent4.putExtra("numberPeople", String.valueOf(roundRegister.getPeople()));
+                        startActivity(intent4);
                         break;
 
                 }

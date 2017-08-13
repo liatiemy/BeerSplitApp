@@ -2,8 +2,8 @@ package tiemy.android.br.com.beersplitapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 import tiemy.android.br.com.beersplitapp.dao.ExpenseDAO;
 import tiemy.android.br.com.beersplitapp.model.Expense;
 
-public class ExpenseActivity extends AppCompatActivity {
+public class ExpenseUpdateActivity  extends AppCompatActivity {
 
     private ExpenseDAO expenseDAO = new ExpenseDAO(this);
     private Expense expense;
@@ -21,6 +21,9 @@ public class ExpenseActivity extends AppCompatActivity {
     EditText etQuantityOfProduct;
 
     int id_round;
+    int quantity;
+    String expenseName;
+    double price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +31,20 @@ public class ExpenseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_expense);
 
         Bundle param = getIntent().getExtras();
-        id_round = Integer.parseInt(param.getString("id_round"));
-        Toast.makeText(this, "id_round: " + String.valueOf(id_round), Toast.LENGTH_SHORT).show();
+        id_round = param.getInt("id");
+        quantity = param.getInt("quantity");
+        expenseName = param.getString("expense");
+        price = param.getDouble("price");
+
+        //Toast.makeText(this, "id_round: " + String.valueOf(id_round), Toast.LENGTH_SHORT).show();
 
         etExpenseName = (EditText) findViewById(R.id.etExpenseName);
         etUnitPrice = (EditText) findViewById(R.id.etUnitPrice);
         etQuantityOfProduct = (EditText) findViewById(R.id.etQuantityOfProduct);
+
+        etExpenseName.setText(expenseName);
+        etQuantityOfProduct.setText(String.valueOf(quantity));
+        etUnitPrice.setText(String.valueOf(price));
 
 
 
@@ -43,13 +54,14 @@ public class ExpenseActivity extends AppCompatActivity {
         double unitPrice = Double.parseDouble(etUnitPrice.getText().toString());
         int quantityOfProduct = Integer.parseInt(etQuantityOfProduct.getText().toString());
 
-        expense = new Expense();
-        expense.setId_round(id_round);
+        expense = expenseDAO.getByExpense(expenseName);
+
+        //expense.setId_round(id_round);
         expense.setNameExpense(expenseName);
         expense.setPrice(unitPrice);
         expense.setQuantity(quantityOfProduct);
 
-        String result = expenseDAO.add(expense);
+        String result = expenseDAO.update(expenseName, expense);
         //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         if(!result.contains("erro")){
             Intent intent = new Intent();
@@ -57,8 +69,8 @@ public class ExpenseActivity extends AppCompatActivity {
             setResult(Activity.RESULT_OK, intent);
             finish();
         }
-    }
 
+    }
     public void discart(View view)
     {
         String expenseName = etExpenseName.getText().toString();

@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btDiscart"
         android:text="Discart"
-        android:onClick="Discart"
+        android:onClick="discart"
         android:layout_weight="0.5"/>
     </LinearLayout>
 </LinearLayout>
