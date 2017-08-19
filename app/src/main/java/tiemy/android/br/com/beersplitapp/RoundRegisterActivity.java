@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,14 +41,15 @@ public class RoundRegisterActivity extends AppCompatActivity{
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
 
+        ultimoRoundCadastrado = roundRegisterDAO.getLastIdRound()+1;
+        roundRegister = new RoundRegister();
+        roundRegister.setId_round(ultimoRoundCadastrado);
+
         linhaAdapter = new LinhaAdapter(new ArrayList<String>(), new OnItemClickListenter() {
             @Override
             public void onItemClick(String item) {
                 //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
 
-                ultimoRoundCadastrado = roundRegisterDAO.getLastIdRound()+1;
-                roundRegister = new RoundRegister();
-                roundRegister.setId_round(ultimoRoundCadastrado);
 
 
                 switch (item){
@@ -106,7 +108,7 @@ public class RoundRegisterActivity extends AppCompatActivity{
         }
         if (requestCode == AMOUNT_PEOPLE_REQUEST) {
             if (resultCode == RESULT_OK) {
-                roundRegister.setPeople(Integer.parseInt(data.getStringExtra("numberPeople")));
+                roundRegister.setPeople(new BigDecimal(data.getStringExtra("numberPeople")));
                 //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
             }
         }

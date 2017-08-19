@@ -16,19 +16,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tvExpense"
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tvQuantity"
             android:layout_weight="0.4"
+            android:textAlignment="center"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tvSoma"
-            android:layout_weight="0.3"
+            android:layout_weight="0.4"
             />
 
     </LinearLayout>

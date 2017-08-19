@@ -42,6 +42,12 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.LinhaViewHol
 
         holder.tvMenu.setText(rounds.get(position).getName());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(rounds.get(position));
+            }
+        });
     }
 
     @Override

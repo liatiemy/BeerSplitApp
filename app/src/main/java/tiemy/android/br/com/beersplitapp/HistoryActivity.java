@@ -34,19 +34,20 @@ public class HistoryActivity extends AppCompatActivity {
         roundAdapter = new RoundAdapter(new ArrayList<RoundRegister>(), new OnRoundClickListener() {
             @Override
             public void onItemClick(RoundRegister roundRegister) {
-                Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
-                roundRegister = new RoundRegister();
-                //TODO fazer o metodo para recupear uma rodada
-                roundRegister = roundRegisterDAO.getByRound(String.valueOf(roundRegister.getId_round()));
+                //Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
+                //roundRegister = new RoundRegister();
+                roundRegister = roundRegisterDAO.getByRound(String.valueOf(roundRegister.getId_round()+1));
                 if(roundRegister.getId_round()!=0) {
+                    Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
                     //TODO fazer classe e layout para exibir a rodada
                     Intent intent = new Intent(getApplicationContext(), RoundActivity.class);
                     intent.putExtra("id_round", roundRegister.getId_round());
 //                    intent.putExtra("name", roundRegister.getName());
 //                    intent.putExtra("people", roundRegister.getPeople());
 //                    intent.putExtra("total", roundRegister.getTotal());
+//                    intent.putExtra("totalTip", roundRegister.getTotalTip());
 //                    intent.putExtra("totalPerPerson", roundRegister.getTotalPerPerson());
-//                    intent.putExtra("tip", roundRegister.getTip());
+//                    intent.putExtra("totalPerPersonTips", roundRegister.getTotalPerPersonTips());
                     startActivity(intent);
                 }
             }
@@ -73,8 +74,8 @@ public class HistoryActivity extends AppCompatActivity {
             setContentView(R.layout.activity_empty_history);
 
         }else {
-            Toast.makeText(this, "qtde de rodas: " + rounds.size(),
-                    Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "qtde de rodas: " + rounds.size(),
+             //       Toast.LENGTH_SHORT).show();
             roundAdapter.update(rounds);
         }
     }

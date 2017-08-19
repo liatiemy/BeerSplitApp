@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="6dp"
     tools:context="tiemy.android.br.com.beersplitapp.TotalActivity">
 <ScrollView
     android:layout_width="match_parent"
@@ -59,6 +60,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvTotalPerPerson"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total per person with tips:"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTotalPerPersonTips"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

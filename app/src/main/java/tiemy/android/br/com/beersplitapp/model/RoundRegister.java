@@ -1,17 +1,35 @@
 package tiemy.android.br.com.beersplitapp.model;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class RoundRegister {
 
     private int id_round;
     private String name;
-    private int people;
+    private BigDecimal people;
     private List<Expense> expenses;
-    private double total;
-    private double totalPerPerson;
-    private String tip;
+    private BigDecimal total;
+    private BigDecimal totalTip;
+    private BigDecimal totalPerPerson;
+    private BigDecimal totalPerPersonTips;
+
+    public BigDecimal getTotalTip() {
+        return totalTip;
+    }
+
+    public void setTotalTip(BigDecimal totalTip) {
+        this.totalTip = totalTip;
+    }
+
+    public BigDecimal getTotalPerPersonTips() {
+        return totalPerPersonTips;
+    }
+
+    public void setTotalPerPersonTips(BigDecimal totalPerPersonTips) {
+        this.totalPerPersonTips = totalPerPersonTips;
+    }
 
     public int getId_round() {
         return id_round;
@@ -29,11 +47,11 @@ public class RoundRegister {
         this.name = name;
     }
 
-    public int getPeople() {
+    public BigDecimal getPeople() {
         return people;
     }
 
-    public void setPeople(int people) {
+    public void setPeople(BigDecimal people) {
         this.people = people;
     }
 
@@ -45,27 +63,20 @@ public class RoundRegister {
         this.expenses = expenses;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
-    public double getTotalPerPerson() {
+    public BigDecimal getTotalPerPerson() {
         return totalPerPerson;
     }
 
-    public void setTotalPerPerson(double totalPerPerson) {
+    public void setTotalPerPerson(BigDecimal totalPerPerson) {
         this.totalPerPerson = totalPerPerson;
     }
 
-    public String getTip() {
-        return tip;
-    }
-
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
 }

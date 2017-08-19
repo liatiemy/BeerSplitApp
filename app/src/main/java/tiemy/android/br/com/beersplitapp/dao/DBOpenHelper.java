@@ -17,7 +17,7 @@ import tiemy.android.br.com.beersplitapp.R;
 public class DBOpenHelper extends SQLiteOpenHelper{
 
     private static final String DB_NAME = "beersplit.db";
-    private static final int DB_VERSION = 4;
+    private static final int DB_VERSION = 5;
 
     private Context ctx;
 

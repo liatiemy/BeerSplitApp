@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -125,6 +126,30 @@ public class ExpenseDAO {
 
         }
             return expense;
+    }
+    public List<Expense> getByIdRound(int id_round){
+        List<Expense> expenses = new ArrayList<Expense>();
+
+        SQLiteDatabase db = banco.getReadableDatabase();
+        String colunas[]= {COLUMN_ID_ROUND, COLUMN_NAME, COLUMN_PRICE, COLUMN_QUANTITY};
+
+        Cursor cursor = db.query(TABLE_EXPENSE,
+                colunas,
+                COLUMN_ID_ROUND + "=? ",
+                new String[]{String.valueOf(id_round)},
+                null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Expense expense = new Expense();
+                expense.setId_round(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_ROUND)));
+                expense.setNameExpense(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+                expense.setPrice(cursor.getDouble(cursor.getColumnIndex(COLUMN_PRICE)));
+                expense.setQuantity(cursor.getInt(cursor.getColumnIndex(COLUMN_QUANTITY)));
+                expenses.add(expense);
+            }while(cursor.moveToNext());
+        }
+        return expenses;
     }
 
 }
