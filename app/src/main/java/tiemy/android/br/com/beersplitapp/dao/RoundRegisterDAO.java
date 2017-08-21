@@ -41,7 +41,7 @@ public class RoundRegisterDAO {
         cv.put(COLUMN_TOTAL, roundRegister.getTotal().doubleValue());
         cv.put(COLUMN_TOTAL_TIP, roundRegister.getTotalTip().doubleValue());
         cv.put(COLUMN_TOTALPERPERSON, roundRegister.getTotalPerPerson().doubleValue());
-        cv.put(COLUMN_TOTALPERPERSONTIP, roundRegister.getTotalPerPerson().doubleValue());
+        cv.put(COLUMN_TOTALPERPERSONTIP, roundRegister.getTotalPerPersonTips().doubleValue());
 
         result = db.insert(TABLE_ROUND, null, cv);
 
@@ -99,17 +99,39 @@ public class RoundRegisterDAO {
         return roundRegister;
     }
 
-    public int getLastIdRound() {
-//        int lastId = 1;
-//        SQLiteDatabase db = banco.getReadableDatabase();
-//        return (int) DatabaseUtils.queryNumEntries(db,TABLE_ROUND);
+    public RoundRegister getByName(String name){
+        RoundRegister roundRegister = new RoundRegister();
+        SQLiteDatabase db = banco.getReadableDatabase();
+        String colunas[]= {COLUMN_ID_ROUND, COLUMN_NAME, COLUMN_PEOPLE, COLUMN_TOTAL,
+                COLUMN_TOTAL_TIP, COLUMN_TOTALPERPERSON, COLUMN_TOTALPERPERSONTIP};
 
+        Cursor cursor = db.query(TABLE_ROUND,
+                colunas,
+                COLUMN_NAME + "=?",
+                new String[]{name},
+                null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            roundRegister = new RoundRegister();
+            roundRegister.setId_round(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_ROUND)));
+            roundRegister.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+            roundRegister.setPeople(new BigDecimal(cursor.getInt(cursor.getColumnIndex(COLUMN_PEOPLE))));
+            roundRegister.setTotal(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTAL))));
+            roundRegister.setTotalTip(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTAL_TIP))));
+            roundRegister.setTotalPerPerson(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTALPERPERSON))));
+            roundRegister.setTotalPerPersonTips(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTALPERPERSONTIP))));
+        }
+        return roundRegister;
+    }
+
+    public int getLastIdRound() {
         int lastId = 0;
         String query = "SELECT max(" + COLUMN_ID_ROUND + ") FROM " + TABLE_ROUND;
         SQLiteDatabase db = banco.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+
         if(cursor.moveToFirst()){
-            lastId = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_ROUND));
+            lastId = cursor.getInt(0);
         }
         return lastId;
     }

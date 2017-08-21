@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Beer Split</string>
+    <string name="action_settings">Sobre</string>
+    <string name="hint_login">Informe o login</string>
+    <string name="hint_senha">Informe a senha</string>
+    <string name="log_in">Logar</string>
+    <string name="login">Sair</string>
+    <string name="manter_conectado">Mantenha-me conectado</string>
+    <string name="password">Senha</string>
+    <string name="title_activity_beer_map">Mapa Beer Split</string>
+
+    <string name="main">A melhor forma de dividir a conta com seus amigos em um bar, pub ou restaurante.
+    \n Nós te ajudamos a calcular tudo sem perder tempo calculando a taxa de serviço.
+    \n \n Não perca essa oportunidade! Comece agora sua rodada!</string>
+
+    <string name="developed_by">Desenvolvido por Marília Tiemy Matrubashi</string>
+
+    <string name="version">Versão 1.0</string>
+
+    <string name="local_activity">Nome do estabelecimento</string>
+    <string name="history_activity">Beer Split Histórico</string>
+    <string name="total_activity">Beer Split Total</string>
+    <string name="place_name">Estabelecimento:</string>
+    <string name="number_people">Quantidade de pessoas:</string>
+    <string name="total">Total:</string>
+    <string name="total_tips">Total com serviço:</string>
+    <string name="split_bill">Total por pessoa:</string>
+    <string name="split_bill_tips">Total por pessoa com serviço:</string>
+    <string name="delete_button">Apagar rodada</string>
+
+
+</resources>

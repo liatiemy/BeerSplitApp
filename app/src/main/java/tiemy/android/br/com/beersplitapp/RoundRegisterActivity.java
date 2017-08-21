@@ -17,6 +17,7 @@ import java.util.List;
 
 import tiemy.android.br.com.beersplitapp.adapter.LinhaAdapter;
 import tiemy.android.br.com.beersplitapp.api.OnItemClickListenter;
+import tiemy.android.br.com.beersplitapp.dao.ExpenseDAO;
 import tiemy.android.br.com.beersplitapp.dao.RoundRegisterDAO;
 import tiemy.android.br.com.beersplitapp.model.RoundRegister;
 
@@ -25,6 +26,7 @@ public class RoundRegisterActivity extends AppCompatActivity{
     private LinhaAdapter linhaAdapter;
     private RoundRegister roundRegister;
     private RoundRegisterDAO roundRegisterDAO = new RoundRegisterDAO(this);
+    private ExpenseDAO expenseDAO = new ExpenseDAO(this);
     int ultimoRoundCadastrado;
 
     static final int LOCAL_NAME_REQUEST = 1;
@@ -64,15 +66,18 @@ public class RoundRegisterActivity extends AppCompatActivity{
                     case "Expenses":
                         Intent intent3 = new Intent(RoundRegisterActivity.this, ExpensesActivity.class);
                         intent3.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
-                        startActivity(intent3);
+                        //startActivity(intent3);
+                        startActivityForResult(intent3, EXPENSE_REQUEST);
                         break;
                     case "Total":
-                        Intent intent4 = new Intent(RoundRegisterActivity.this, TotalActivity.class);
-                        intent4.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
-                        intent4.putExtra("localName", roundRegister.getName());
-                        intent4.putExtra("numberPeople", String.valueOf(roundRegister.getPeople()));
-                        startActivity(intent4);
-                        break;
+                        if(validaRoundRegister()) {
+                            Intent intent4 = new Intent(RoundRegisterActivity.this, TotalActivity.class);
+                            intent4.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
+                            intent4.putExtra("localName", roundRegister.getName());
+                            intent4.putExtra("numberPeople", String.valueOf(roundRegister.getPeople()));
+                            startActivity(intent4);
+                            break;
+                        }
 
                 }
             }
@@ -88,6 +93,16 @@ public class RoundRegisterActivity extends AppCompatActivity{
         recyclerView.addItemDecoration(itemDecoration);
 
         carregaDados();
+    }
+
+    private boolean validaRoundRegister() {
+        if(roundRegister.getName()==null || roundRegister.getPeople()==null ||
+                roundRegister.getExpenses()==null) {
+            Toast.makeText(this, "Please, make sure you had inserted a local name, amount of people and expenses to see total account",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void carregaDados(){
@@ -111,6 +126,12 @@ public class RoundRegisterActivity extends AppCompatActivity{
                 roundRegister.setPeople(new BigDecimal(data.getStringExtra("numberPeople")));
                 //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
             }
+        }
+        if (requestCode == EXPENSE_REQUEST) {
+            //if (resultCode == RESULT_OK) {
+                roundRegister.setExpenses(expenseDAO.getAll(roundRegister.getId_round()));
+                //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
+            //}
         }
     }
 }

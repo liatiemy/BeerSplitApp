@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="6dp"
+    android:orientation="vertical"
     tools:context="tiemy.android.br.com.beersplitapp.RoundActivity">
         <ScrollView
             android:layout_width="match_parent"
@@ -17,15 +18,18 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Place:"/>
+                    android:id="@+id/tvPlaceTitle"
+                    android:text="@string/place_name"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:id="@+id/tvPlace"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Number of people:"/>
+                    android:id="@+id/tvNumberTitle"
+                    android:text="@string/number_people"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -39,7 +43,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Total:"/>
+                    android:id="@+id/tvTotalTitle"
+                    android:text="@string/total"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,7 +52,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Total with tips:"/>
+                    android:id="@+id/tvTotalTipsTitle"
+                    android:text="@string/total_tips"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,7 +61,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Total per person:"/>
+                    android:id="@+id/tvTotalPerPersonTitle"
+                    android:text="@string/split_bill"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -63,7 +70,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Total per person with tips:"/>
+                    android:id="@+id/tvTotalPerPersonTipsTitle"
+                    android:text="@string/split_bill_tips"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,9 +80,16 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Delete Round"
+                    android:text="@string/delete_button"
                     android:onClick="delete"/>
             </LinearLayout>
         </ScrollView>
-    </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_menu_send" />
+</android.support.design.widget.CoordinatorLayout>
 

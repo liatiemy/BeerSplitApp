@@ -2,6 +2,8 @@ package tiemy.android.br.com.beersplitapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -45,7 +47,7 @@ public class TotalActivity extends AppCompatActivity {
 
     int id_round;
     String localName = "";
-    BigDecimal numberOfPeople = new BigDecimal(1);
+    BigDecimal numberOfPeople = new BigDecimal(0);
     BigDecimal total = new BigDecimal(0);
     BigDecimal tip = new BigDecimal(0);
     BigDecimal totalPerPerson = new BigDecimal(0);
@@ -89,6 +91,7 @@ public class TotalActivity extends AppCompatActivity {
         tvPlace.setText(localName);
         tvNumberOfPeople.setText(String.valueOf(numberOfPeople));
         calcularValores();
+
     }
 
     private void carregaDados(){

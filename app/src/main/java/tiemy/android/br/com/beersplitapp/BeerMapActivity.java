@@ -42,9 +42,9 @@ public class BeerMapActivity extends FragmentActivity implements OnMapReadyCallb
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng latlng = new LatLng(-23.5583107, -46.6659817);
+        mMap.addMarker(new MarkerOptions().position(latlng).title("O'Malley's"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 18));
 
         mMap.setOnMyLocationButtonClickListener(myLocationChangeListener);
     }

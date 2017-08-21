@@ -1,6 +1,8 @@
 package tiemy.android.br.com.beersplitapp;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -25,6 +27,7 @@ public class HistoryActivity extends AppCompatActivity {
     private RoundRegisterDAO roundRegisterDAO = new RoundRegisterDAO(this);
     private List<RoundRegister> rounds;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +39,12 @@ public class HistoryActivity extends AppCompatActivity {
             public void onItemClick(RoundRegister roundRegister) {
                 //Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
                 //roundRegister = new RoundRegister();
-                roundRegister = roundRegisterDAO.getByRound(String.valueOf(roundRegister.getId_round()+1));
+                //roundRegister = roundRegisterDAO.getByRound(String.valueOf(roundRegister.getId_round()+1));
+                roundRegister = roundRegisterDAO.getByName(String.valueOf(roundRegister.getName()));
                 if(roundRegister.getId_round()!=0) {
-                    Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
-                    //TODO fazer classe e layout para exibir a rodada
+                    //Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), RoundActivity.class);
                     intent.putExtra("id_round", roundRegister.getId_round());
-//                    intent.putExtra("name", roundRegister.getName());
-//                    intent.putExtra("people", roundRegister.getPeople());
-//                    intent.putExtra("total", roundRegister.getTotal());
-//                    intent.putExtra("totalTip", roundRegister.getTotalTip());
-//                    intent.putExtra("totalPerPerson", roundRegister.getTotalPerPerson());
-//                    intent.putExtra("totalPerPersonTips", roundRegister.getTotalPerPersonTips());
                     startActivity(intent);
                 }
             }
@@ -84,4 +81,6 @@ public class HistoryActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RoundRegisterActivity.class);
         startActivity(intent);
     }
+
+
 }

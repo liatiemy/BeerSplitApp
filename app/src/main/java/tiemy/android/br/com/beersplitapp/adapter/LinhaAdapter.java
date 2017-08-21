@@ -53,8 +53,8 @@ public class LinhaAdapter extends RecyclerView.Adapter<LinhaAdapter.LinhaViewHol
 
 
         Picasso.with(holder.itemView.getContext())
-                .load(R.mipmap.ic_launcher)
-                .placeholder(R.mipmap.ic_launcher)
+                .load(R.drawable.ic_greater)
+                .placeholder(R.drawable.ic_greater)
                 .error(R.mipmap.ic_launcher) //em caso de erro ao acessar a imagem pela url
                 .into(holder.ivSeta);
 

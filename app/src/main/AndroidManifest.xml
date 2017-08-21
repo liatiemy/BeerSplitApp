@@ -69,16 +69,20 @@
             android:label="Round Register" />
         <activity
             android:name=".LocalNameActivity"
-            android:label="Local Name" />
+            android:label="@string/local_activity" />
         <activity
             android:name=".HistoryActivity"
-            android:label="Beer Split History" />
+            android:label="@string/history_activity" />
         <activity android:name=".RoundActivity" />
         <activity android:name=".AmountOfPeopleActivity" />
         <activity android:name=".ExpensesActivity" />
         <activity android:name=".ExpenseActivity" />
         <activity android:name=".ExpenseUpdateActivity" />
-        <activity android:name=".TotalActivity"></activity>
+        <activity
+            android:name=".TotalActivity"
+            android:label="@string/total_activity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".EmailActivity"></activity>
     </application>
 
 </manifest>

@@ -54,8 +54,8 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.LinhaVie
         });
 
         Picasso.with(holder.itemView.getContext())
-                .load(R.id.ivSeta)
-                .placeholder(R.mipmap.ic_launcher)
+                .load(R.drawable.ic_greater)
+                .placeholder(R.drawable.ic_greater)
                 .error(R.mipmap.ic_launcher) //em caso de erro ao acessar a imagem pela url
                 .into(holder.ivLogo);
 
