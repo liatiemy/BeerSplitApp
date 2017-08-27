@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Registry round"
+            android:text="@string/round_register"
             android:onClick="registry"/>
 
 </LinearLayout>

@@ -5,24 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context="tiemy.android.br.com.beersplitapp.AmountOfPeopleActivity">
+    android:padding="6dp"
+    tools:context="tiemy.android.br.com.beersplitapp.LigacaoActivity">
+
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/amount_people"/>
+        android:text="@string/invite">
+
+        <requestFocus/>
+    </TextView>
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etNumberPeople"
-        android:inputType="number"/>
+        android:id="@+id/etTelefone"
+        android:ems="10"
+        android:hint="@string/telefone">
+
+    </EditText>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/bt_ok"
-        android:onClick="btNumber"/>
+        android:id="@+id/btLigar"
+        android:text="@string/call"/>
+
 </LinearLayout>

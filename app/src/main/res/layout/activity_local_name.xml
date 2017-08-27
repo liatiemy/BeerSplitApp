@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="What's the place's name?"/>
+        android:text="@string/hint_place_name"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="OK"
+        android:text="@string/bt_ok"
         android:onClick="btOk"/>
 
 </LinearLayout>

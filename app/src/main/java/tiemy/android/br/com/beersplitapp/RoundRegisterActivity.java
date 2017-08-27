@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
@@ -93,6 +95,17 @@ public class RoundRegisterActivity extends AppCompatActivity{
         recyclerView.addItemDecoration(itemDecoration);
 
         carregaDados();
+
+
+        FloatingActionButton ligacao = (FloatingActionButton) findViewById(R.id.ligacao);
+        ligacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RoundRegisterActivity.this, LigacaoActivity.class));
+                finish();
+
+            }
+        });
     }
 
     private boolean validaRoundRegister() {

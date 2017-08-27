@@ -28,6 +28,23 @@
     <string name="split_bill">Total por pessoa:</string>
     <string name="split_bill_tips">Total por pessoa com serviço:</string>
     <string name="delete_button">Apagar rodada</string>
+    <string name="feito_por">de Tiemy</string>
+    <string name="round_register">Registrar rodada</string>
+    <string name="hint_place_name">Qual é o nome do estabelecimento?</string>
+    <string name="expense_name">Nome do produto:</string>
+    <string name="hint_expense">Cerveja/Fritas/Frango...</string>
+    <string name="unit_price">Preço unitário</string>
+    <string name="hint_unit_price">10,00 (Preço de uma cerveja)</string>
+    <string name="quantity_expense">Qual a quantitdade do produto?</string>
+    <string name="hint_quantity">3 (quantidade de cervejas pedidas)</string>
+    <string name="save">Salvar</string>
+    <string name="discart">Apagar</string>
+    <string name="empty_list">Você não possui nenhuma rodada.
+        \n Vamos começar sua primeira rodada agora!</string>
+    <string name="amount_people">Quantas pessoas irão dividr a conta?</string>
+    <string name="call">Ligar</string>
+    <string name="invite">Invite your friends to share great moments</string>
+
 
 
 </resources>

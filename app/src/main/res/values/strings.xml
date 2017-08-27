@@ -35,5 +35,24 @@
     <string name="split_bill">Total per person:</string>
     <string name="split_bill_tips">Total per person with tips:</string>
     <string name="delete_button">Delete Round</string>
+    <string name="feito_por">by Tiemy</string>
+    <string name="round_register">Registry round</string>
+    <string name="save_round">Save Round</string>
+    <string name="hint_place_name">What is the name of the place?</string>
+    <string name="bt_ok">OK</string>
+    <string name="expense_name">Name of expense:</string>
+    <string name="hint_expense">Beer/fries/chicken...</string>
+    <string name="unit_price">Unit price</string>
+    <string name="hint_unit_price">10,00 (Price of one beer)</string>
+    <string name="quantity_expense">How many you order it?</string>
+    <string name="hint_quantity">3 (number of beers ordered)</string>
+    <string name="save">Save</string>
+    <string name="discart">Discart</string>
+    <string name="empty_list">You still do not have a round register.
+        \n Let us start your first now!</string>
+    <string name="amount_people">How many people are going to split the bill?</string>
+    <string name="call">Call</string>
+    <string name="telefone">99999999999</string>
+    <string name="invite">Invite your friends to share great moments</string>
 
 </resources>

@@ -12,36 +12,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvExpenseName"
-        android:text="Expense's name:"/>
+        android:text="@string/expense_name"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etExpenseName"
-        android:hint="Beer/fries/chicken..."/>
+        android:hint="@string/hint_expense"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvUnitPrice"
-        android:text="Unit price"/>
+        android:text="@string/unit_price"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:id="@+id/etUnitPrice"
-        android:hint="10,00 (Price of one beer)"/>
+        android:hint="@string/hint_unit_price"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvQuantityOfExpense"
-        android:text="How many you order it?"/>
+        android:text="@string/quantity_expense"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etQuantityOfProduct"
         android:inputType="number"
-        android:hint="3 (number of beers ordered)"/>
+        android:hint="@string/hint_quantity"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,14 +51,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btSave"
-        android:text="Save"
+        android:text="@string/save"
         android:onClick="save"
         android:layout_weight="0.5"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btDiscart"
-        android:text="Discart"
+        android:text="@string/discart"
         android:onClick="discart"
         android:layout_weight="0.5"/>
     </LinearLayout>

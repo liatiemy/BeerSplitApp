@@ -50,7 +50,6 @@ public class RoundActivity extends AppCompatActivity {
     TextView tvTotalPerPersonTips;
     int idRound;
 
-    static final int REQUEST = 1;
     private String message;
     private String subject;
 
@@ -104,17 +103,10 @@ public class RoundActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                  //      .setAction("Action", null).show();
-                //Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
                 message = montaCorpoEmail();
                 subject = roundRegister.getName().toString();
-//                intent.putExtra("message", message);
-//                intent.putExtra("localName", subject);
-//                startActivityForResult(intent, REQUEST);
 
                 Intent email = new Intent(Intent.ACTION_SEND);
-                //email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
                 email.putExtra(Intent.EXTRA_SUBJECT, subject);
                 email.putExtra(Intent.EXTRA_TEXT, message);
                 email.setType("message/rfc822");

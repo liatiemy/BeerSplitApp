@@ -26,6 +26,7 @@ public class HistoryActivity extends AppCompatActivity {
     private RoundAdapter roundAdapter;
     private RoundRegisterDAO roundRegisterDAO = new RoundRegisterDAO(this);
     private List<RoundRegister> rounds;
+    static final int REQUEST_DELETE = 1;
 
 
     @Override
@@ -45,7 +46,8 @@ public class HistoryActivity extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(), roundRegister.getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), RoundActivity.class);
                     intent.putExtra("id_round", roundRegister.getId_round());
-                    startActivity(intent);
+                    //startActivity(intent);
+                    startActivityForResult(intent, REQUEST_DELETE);
                 }
             }
         });
@@ -66,8 +68,8 @@ public class HistoryActivity extends AppCompatActivity {
     private void carregaDados() {
         rounds = roundRegisterDAO.getAll();
         if(rounds.size() == 0) {
-            Toast.makeText(this, "Não há rodadas cadastradas",
-                    Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Não há rodadas cadastradas",
+              //      Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_empty_history);
 
         }else {
@@ -82,5 +84,14 @@ public class HistoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //if (requestCode == REQUEST) {
+        if (resultCode == RESULT_OK) {
+            //roundRegister.setName(data.getStringExtra("localName").toString());
+            //Toast.makeText(this, "localName: " + roundRegister.getName(), Toast.LENGTH_SHORT).show();
+            carregaDados();
+        }
+        //}
+    }
 }
