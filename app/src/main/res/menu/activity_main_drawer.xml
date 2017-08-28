@@ -5,19 +5,19 @@
         <item
             android:id="@+id/round_register"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Round register" />
+            android:title="@string/round_register" />
         <item
             android:id="@+id/history"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="History" />
+            android:title="@string/history" />
         <item
             android:id="@+id/beer_map"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Beer Map" />
+            android:title="@string/beer_map" />
         <item
             android:id="@+id/log_out"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Log out" />
+            android:title="@string/log_out" />
     </group>
 
 </menu>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu">
+        <item>@string/local_activity</item>
+        <item>@string/amount_of_people</item>
+        <item>@string/expenses</item>
+        <item>@string/total_round</item>
+    </string-array>
+</resources>

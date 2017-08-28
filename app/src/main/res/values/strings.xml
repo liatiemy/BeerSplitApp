@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Beer Split</string>
-    <string name="login">Login</string>
     <string name="hint_login">Insert your login</string>
     <string name="password">Password</string>
     <string name="hint_senha">Insert your password</string>
@@ -54,5 +53,11 @@
     <string name="call">Call</string>
     <string name="telefone">99999999999</string>
     <string name="invite">Invite your friends to share great moments</string>
+    <string name="history">History</string>
+    <string name="beer_map">Map</string>
+    <string name="log_out">Log out</string>
+    <string name="amount_of_people">Amount of people</string>
+    <string name="expenses">Expenses</string>
+    <string name="total_round">Total</string>
 
 </resources>

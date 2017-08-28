@@ -119,10 +119,11 @@ public class RoundRegisterActivity extends AppCompatActivity{
     }
 
     private void carregaDados(){
-        itens.add("Local Name");
-        itens.add("Amount of people");
-        itens.add("Expenses");
-        itens.add("Total");
+        String[] menu = getResources().getStringArray(R.array.menu);
+        itens.add(menu[0]);
+        itens.add(menu[1]);
+        itens.add(menu[2]);
+        itens.add(menu[3]);
         linhaAdapter.update(itens);
     }
 
