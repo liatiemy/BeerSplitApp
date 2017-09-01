@@ -12,13 +12,16 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import tiemy.android.br.com.beersplitapp.MenuActivity;
+import tiemy.android.br.com.beersplitapp.R;
+
 public class MeuFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage){
         //Verifica se a mensagem contém uma carga útil de dados
-        /*if(remoteMessage.getData().size() > 0){
+        if(remoteMessage.getData().size() > 0){
             //showNotification(remoteMessage.getData().get("descricao"),
             // remoteMessage.getData().get("descricao"));
 
@@ -29,28 +32,28 @@ public class MeuFirebaseMessagingService extends FirebaseMessagingService {
             showNotification(
                     remoteMessage.getNotification().getTitle(),
                     remoteMessage.getNotification().getBody());
-        }*/
+        }
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
 
     }
 
-//    private void showNotification(String titulo, String mensagem) {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
-//
-//        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-//                .setContentTitle(titulo)
-//                .setSmallIcon(R.mipmap.ic_launcher)
-//                .setContentText(mensagem)
-//                .setAutoCancel(true)
-//                .setSound(defaultSoundUri)
-//                .setContentIntent(pendingIntent);
-//
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//        notificationManager.notify(0, notificationBuilder.build());
-//    }
+    private void showNotification(String titulo, String mensagem) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setContentTitle(titulo)
+                .setSmallIcon(R.drawable.beersplit)
+                .setContentText(mensagem)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0, notificationBuilder.build());
+    }
 }

@@ -54,34 +54,28 @@ public class RoundRegisterActivity extends AppCompatActivity{
             public void onItemClick(String item) {
                 //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
 
-
-
-                switch (item){
-                    case "Local Name":
-                        Intent intent = new Intent(getApplicationContext(), LocalNameActivity.class);
-                        startActivityForResult(intent, LOCAL_NAME_REQUEST);
-                        break;
-                    case "Amount of people":
-                        Intent intent2 = new Intent(getApplicationContext(), AmountOfPeopleActivity.class);
-                        startActivityForResult(intent2, AMOUNT_PEOPLE_REQUEST);
-                        break;
-                    case "Expenses":
-                        Intent intent3 = new Intent(RoundRegisterActivity.this, ExpensesActivity.class);
-                        intent3.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
-                        //startActivity(intent3);
-                        startActivityForResult(intent3, EXPENSE_REQUEST);
-                        break;
-                    case "Total":
-                        if(validaRoundRegister()) {
-                            Intent intent4 = new Intent(RoundRegisterActivity.this, TotalActivity.class);
-                            intent4.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
-                            intent4.putExtra("localName", roundRegister.getName());
-                            intent4.putExtra("numberPeople", String.valueOf(roundRegister.getPeople()));
-                            startActivity(intent4);
-                            break;
-                        }
+            if(item.equals(getResources().getString(R.string.local_activity))) {
+                Intent intent = new Intent(getApplicationContext(), LocalNameActivity.class);
+                startActivityForResult(intent, LOCAL_NAME_REQUEST);
+            } else if (item.equals(getResources().getString(R.string.amount_of_people))) {
+                Intent intent2 = new Intent(getApplicationContext(), AmountOfPeopleActivity.class);
+                startActivityForResult(intent2, AMOUNT_PEOPLE_REQUEST);
+            } else if (item.equals(getResources().getString(R.string.expenses))) {
+                Intent intent3 = new Intent(RoundRegisterActivity.this, ExpensesActivity.class);
+                intent3.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
+                //startActivity(intent3);
+                startActivityForResult(intent3, EXPENSE_REQUEST);
+            } else {
+                if (validaRoundRegister()) {
+                    Intent intent4 = new Intent(RoundRegisterActivity.this, TotalActivity.class);
+                    intent4.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
+                    intent4.putExtra("localName", roundRegister.getName());
+                    intent4.putExtra("numberPeople", String.valueOf(roundRegister.getPeople()));
+                    startActivity(intent4);
 
                 }
+            }
+
             }
         });
 

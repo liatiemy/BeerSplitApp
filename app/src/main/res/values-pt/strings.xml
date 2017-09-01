@@ -48,7 +48,9 @@
     <string name="log_out">Sair</string>
     <string name="amount_of_people">Quantidade de pessoas</string>
     <string name="expenses">Despesas</string>
-
+    <string name="total_round">Total</string>
+    <string name="save_round">Salvar Rodada</string>
+    <string name="bt_ok">OK</string>
 
 
 </resources>
