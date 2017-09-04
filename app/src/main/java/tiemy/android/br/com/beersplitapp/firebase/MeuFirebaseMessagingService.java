@@ -22,8 +22,8 @@ public class MeuFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage){
         //Verifica se a mensagem contém uma carga útil de dados
         if(remoteMessage.getData().size() > 0){
-            //showNotification(remoteMessage.getData().get("descricao"),
-            // remoteMessage.getData().get("descricao"));
+            showNotification(remoteMessage.getData().get("descricao"),
+            remoteMessage.getData().get("descricao"));
 
         }
 

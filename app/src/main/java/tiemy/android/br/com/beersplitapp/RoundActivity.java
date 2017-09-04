@@ -2,23 +2,26 @@ package tiemy.android.br.com.beersplitapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.math.BigDecimal;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import android.Manifest;
 
 import tiemy.android.br.com.beersplitapp.adapter.TotalAdapter;
 import tiemy.android.br.com.beersplitapp.dao.ExpenseDAO;
@@ -52,6 +55,12 @@ public class RoundActivity extends AppCompatActivity {
 
     private String message;
     private String subject;
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,17 +115,53 @@ public class RoundActivity extends AppCompatActivity {
                 message = montaCorpoEmail();
                 subject = roundRegister.getName().toString();
 
-                Intent email = new Intent(Intent.ACTION_SEND);
-                email.putExtra(Intent.EXTRA_SUBJECT, subject);
-                email.putExtra(Intent.EXTRA_TEXT, message);
-                email.setType("message/rfc822");
-                startActivity(Intent.createChooser(email, "Choose an Email client :"));
-                finish();
+//                Intent email = new Intent(Intent.ACTION_SEND);
+//                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+//                email.putExtra(Intent.EXTRA_TEXT, message);
+//                email.setType("message/rfc822");
+//                startActivity(Intent.createChooser(email, "Choose an Email client :"));
+//                finish();
+
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);// envio dos dados para o compartilhamento padrao do android
+                sendIntent.setType("*/*");// define extenção do arquivo .. esta para aceitar todas as extenções
+
+
+                File f = new File(Environment.getExternalStorageDirectory() + File.separator + "temporary_file.txt");
+                Log.d("Arquivo f:", "" + f);
+                try {
+
+                    checkPermission();
+                    f.createNewFile();
+
+                    FileOutputStream fo = new FileOutputStream(f);
+                    fo.write(message.getBytes());
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/temporary_file.txt"));
+
+                startActivity(sendIntent);
+
 
             }
         });
     }
 
+    public void checkPermission(){
+        int permission = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE);
+        }
+    }
 
     private void carregaDados() {
         itens = expenseDAO.getAll(idRound);
@@ -144,7 +189,6 @@ public class RoundActivity extends AppCompatActivity {
         }
     }
 
-    @NonNull
     private String montaCorpoEmail() {
         StringBuilder messagem = new StringBuilder();
         messagem.append(tvPlaceTitle.getText().toString());

@@ -24,7 +24,7 @@ public class LigacaoActivity extends AppCompatActivity implements View.OnClickLi
         EditText campoTelefone = (EditText) findViewById(R.id.etTelefone);
         String telefone = campoTelefone.getText().toString();
 
-        Uri uri = Uri.parse("Tel: " + telefone);
+        Uri uri = Uri.parse("tel: " + telefone);
 
         Intent intent = new Intent(Intent.ACTION_DIAL, uri);
 

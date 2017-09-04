@@ -12,22 +12,22 @@ public class RetrofitClient {
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(String baseUrl){
-        if(retrofit == null){
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .addNetworkInterceptor(new StethoInterceptor())
-                    .build();
+    public static Retrofit getClient(String baseUrl) {
 
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
 
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .client(client)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-        }
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
         return retrofit;
     }
 

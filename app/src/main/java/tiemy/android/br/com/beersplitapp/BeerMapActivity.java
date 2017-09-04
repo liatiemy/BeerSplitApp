@@ -4,26 +4,47 @@ import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import tiemy.android.br.com.beersplitapp.api.APIUtils;
+import tiemy.android.br.com.beersplitapp.api.RetrofitMaps;
+import tiemy.android.br.com.beersplitapp.dao.GooglePlacesResult;
+import tiemy.android.br.com.beersplitapp.model.Usuario;
 
-public class BeerMapActivity extends FragmentActivity implements OnMapReadyCallback {
+
+public class BeerMapActivity extends FragmentActivity
+        implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
+
     private static String[] PERMISSIONS_LOCATION = {
-        android.Manifest.permission.ACCESS_FINE_LOCATION,
-        android.Manifest.permission.ACCESS_COARSE_LOCATION};
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION};
+
+    private GoogleApiClient mGoogleApiClient;
+    private static final int RADIUS = 5000;
+    private static final String TYPE = "bar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +56,7 @@ public class BeerMapActivity extends FragmentActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
 
         ActivityCompat.requestPermissions(this, PERMISSIONS_LOCATION, 1);
-
+        buildGoogleApiClient();
 
     }
 
@@ -45,27 +66,75 @@ public class BeerMapActivity extends FragmentActivity implements OnMapReadyCallb
         mMap.setMyLocationEnabled(true);
 
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
-        @Override
-        public boolean onMyLocationButtonClick() {
-            LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
-            Criteria criteria = new Criteria();
-            String provider = service.getBestProvider(criteria, false);
+            @Override
+            public boolean onMyLocationButtonClick() {
+                LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+                Criteria criteria = new Criteria();
+                String provider = service.getBestProvider(criteria, false);
 
-            if (ActivityCompat.checkSelfPermission(getBaseContext(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(getBaseContext(),
-                            android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(getBaseContext(),
+                        android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(getBaseContext(),
+                                android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return true;
+                }
+
+                Location location = service.getLastKnownLocation(provider);
+                LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+
+                mMap.addMarker(new MarkerOptions().position(loc));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 13));
+
+                RetrofitMaps retrofitMaps = APIUtils.getLocation();
+                retrofitMaps.getNearbyPlaces(TYPE, location.getLatitude()+","+location.getLongitude(), RADIUS).enqueue(new Callback<GooglePlacesResult>() {
+                    @Override
+                    public void onResponse(Call<GooglePlacesResult> call, Response<GooglePlacesResult> response) {
+                        if(response.isSuccessful()) {
+                            for(int i = 0; i < response.body().getResults().size(); i++){
+                                String name = response.body().getResults().get(i).getName();
+                                String endereco = response.body().getResults().get(i).getVicinity();
+                                double lat = response.body().getResults().get(i).getGeometry().getLocation().getLat();
+                                double lng = response.body().getResults().get(i).getGeometry().getLocation().getLng();
+                                LatLng loc = new LatLng(lat, lng);
+                                mMap.addMarker(new MarkerOptions().position(loc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.beer)));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GooglePlacesResult> call, Throwable t) {
+                        Log.e("Failed to get map", t.toString());
+                    }
+                });
+
+
+
                 return true;
             }
-
-            Location location = service.getLastKnownLocation(provider);
-            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-
-            mMap.addMarker(new MarkerOptions().position(loc).title("NOVO"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 17));
-
-            return true;
-        }
         });
+    }
+
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
