@@ -59,6 +59,11 @@
     <string name="amount_of_people">Amount of people</string>
     <string name="expenses">Expenses</string>
     <string name="total_round">Total</string>
-
+    <string name="invalid_round">Please, make sure you had inserted a local name, amount of people and expenses to see total account</string>
+    <string name="qtde_produto_invalido">Please insert a quantity</string>
+    <string name="valor_unitario_invalido">Please insert a price</string>
+    <string name="nome_despesa_invalido">Please insert a name</string>
+    <string name="invalid_local_name">Please insert a name</string>
+    <string name="invalid_number_people">Please insert number of people to share</string>
 
 </resources>

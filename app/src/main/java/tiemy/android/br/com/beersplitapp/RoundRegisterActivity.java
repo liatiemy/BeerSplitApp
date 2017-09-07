@@ -3,8 +3,6 @@ package tiemy.android.br.com.beersplitapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -54,13 +52,15 @@ public class RoundRegisterActivity extends AppCompatActivity{
             public void onItemClick(String item) {
                 //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
 
-            if(item.equals(getResources().getString(R.string.local_activity))) {
+            if(item.contains(getResources().getString(R.string.local_activity))) {
                 Intent intent = new Intent(getApplicationContext(), LocalNameActivity.class);
+                intent.putExtra("localName", roundRegister.getName());
                 startActivityForResult(intent, LOCAL_NAME_REQUEST);
-            } else if (item.equals(getResources().getString(R.string.amount_of_people))) {
+            } else if (item.contains(getResources().getString(R.string.amount_of_people))) {
                 Intent intent2 = new Intent(getApplicationContext(), AmountOfPeopleActivity.class);
+                intent2.putExtra("numberPeople", roundRegister.getPeople());
                 startActivityForResult(intent2, AMOUNT_PEOPLE_REQUEST);
-            } else if (item.equals(getResources().getString(R.string.expenses))) {
+            } else if (item.contains(getResources().getString(R.string.expenses))) {
                 Intent intent3 = new Intent(RoundRegisterActivity.this, ExpensesActivity.class);
                 intent3.putExtra("id_round", String.valueOf(roundRegister.getId_round()));
                 //startActivity(intent3);
@@ -105,7 +105,7 @@ public class RoundRegisterActivity extends AppCompatActivity{
     private boolean validaRoundRegister() {
         if(roundRegister.getName()==null || roundRegister.getPeople()==null ||
                 roundRegister.getExpenses()==null) {
-            Toast.makeText(this, "Please, make sure you had inserted a local name, amount of people and expenses to see total account",
+            Toast.makeText(this, getResources().getString(R.string.invalid_round),
                     Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -118,6 +118,10 @@ public class RoundRegisterActivity extends AppCompatActivity{
         itens.add(menu[1]);
         itens.add(menu[2]);
         itens.add(menu[3]);
+        itens.set(0, menu[0]);
+        itens.set(1, menu[1]);
+        itens.set(2, menu[2]);
+        itens.set(3, menu[3]);
         linhaAdapter.update(itens);
     }
 
@@ -127,12 +131,16 @@ public class RoundRegisterActivity extends AppCompatActivity{
             if (resultCode == RESULT_OK) {
                 roundRegister.setName(data.getStringExtra("localName").toString());
                 //Toast.makeText(this, "localName: " + roundRegister.getName(), Toast.LENGTH_SHORT).show();
+                itens.set(0, getResources().getString(R.string.local_activity)+": "+data.getStringExtra("localName").toString());
+                linhaAdapter.update(itens);
             }
         }
         if (requestCode == AMOUNT_PEOPLE_REQUEST) {
             if (resultCode == RESULT_OK) {
                 roundRegister.setPeople(new BigDecimal(data.getStringExtra("numberPeople")));
                 //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
+                itens.set(1, getResources().getString(R.string.amount_of_people)+": "+data.getStringExtra("numberPeople").toString());
+                linhaAdapter.update(itens);
             }
         }
         if (requestCode == EXPENSE_REQUEST) {

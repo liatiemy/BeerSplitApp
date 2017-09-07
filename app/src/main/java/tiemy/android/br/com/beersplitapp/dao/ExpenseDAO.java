@@ -102,6 +102,7 @@ public class ExpenseDAO {
                 expenses.add(expense);
             }while(cursor.moveToNext());
         }
+        db.close();
         return expenses;
     }
 
@@ -125,6 +126,7 @@ public class ExpenseDAO {
             expense.setQuantity(cursor.getInt(cursor.getColumnIndex(COLUMN_QUANTITY)));
 
         }
+        db.close();
             return expense;
     }
     public List<Expense> getByIdRound(int id_round){
@@ -149,6 +151,7 @@ public class ExpenseDAO {
                 expenses.add(expense);
             }while(cursor.moveToNext());
         }
+        db.close();
         return expenses;
     }
 

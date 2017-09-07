@@ -38,6 +38,7 @@ public class UsuarioDAO {
                 usuarios.add(user);
             }while(cursor.moveToNext());
         }
+        db.close();
         return usuarios;
     }
 

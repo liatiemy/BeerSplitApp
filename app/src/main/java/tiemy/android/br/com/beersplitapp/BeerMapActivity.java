@@ -1,9 +1,12 @@
 package tiemy.android.br.com.beersplitapp;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -30,7 +33,6 @@ import retrofit2.Response;
 import tiemy.android.br.com.beersplitapp.api.APIUtils;
 import tiemy.android.br.com.beersplitapp.api.RetrofitMaps;
 import tiemy.android.br.com.beersplitapp.dao.GooglePlacesResult;
-import tiemy.android.br.com.beersplitapp.model.Usuario;
 
 
 public class BeerMapActivity extends FragmentActivity
@@ -46,6 +48,9 @@ public class BeerMapActivity extends FragmentActivity
     private static final int RADIUS = 5000;
     private static final String TYPE = "bar";
 
+    LocationManager service;
+    LocationListener mlocatioLocationListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,32 @@ public class BeerMapActivity extends FragmentActivity
         ActivityCompat.requestPermissions(this, PERMISSIONS_LOCATION, 1);
         buildGoogleApiClient();
 
+        service = (LocationManager) getSystemService(LOCATION_SERVICE);
+        mlocatioLocationListener = new android.location.LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        };
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+
+        service.requestLocationUpdates(service.GPS_PROVIDER, 1000, 100, mlocatioLocationListener);
     }
 
     @Override
@@ -68,7 +99,6 @@ public class BeerMapActivity extends FragmentActivity
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
                 Criteria criteria = new Criteria();
                 String provider = service.getBestProvider(criteria, false);
 
@@ -135,6 +165,23 @@ public class BeerMapActivity extends FragmentActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        service.removeUpdates(mlocatioLocationListener);
+    }
+
+
 }

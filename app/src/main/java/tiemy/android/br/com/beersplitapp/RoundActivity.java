@@ -128,7 +128,7 @@ public class RoundActivity extends AppCompatActivity {
                 sendIntent.setType("*/*");// define extenção do arquivo .. esta para aceitar todas as extenções
 
 
-                File f = new File(Environment.getExternalStorageDirectory() + File.separator + "temporary_file.txt");
+                File f = new File(Environment.getExternalStorageDirectory() + File.separator + roundRegister.getName().toString()+".txt");
                 Log.d("Arquivo f:", "" + f);
                 try {
 
@@ -142,7 +142,7 @@ public class RoundActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/temporary_file.txt"));
+                sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/" + roundRegister.getName().toString() +".txt"));
 
                 startActivity(sendIntent);
 

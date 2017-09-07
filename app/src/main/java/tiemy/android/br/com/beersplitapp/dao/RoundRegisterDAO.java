@@ -22,6 +22,7 @@ public class RoundRegisterDAO {
     }
 
     public static final String TABLE_ROUND = "rounds";
+    public static final String COLUMN_ROWID = "rowid";
     public static final String COLUMN_ID_ROUND = "id_round";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_PEOPLE = "people";
@@ -96,6 +97,7 @@ public class RoundRegisterDAO {
             roundRegister.setTotalPerPerson(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTALPERPERSON))));
             roundRegister.setTotalPerPersonTips(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTALPERPERSONTIP))));
         }
+        db.close();
         return roundRegister;
     }
 
@@ -121,6 +123,7 @@ public class RoundRegisterDAO {
             roundRegister.setTotalPerPerson(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTALPERPERSON))));
             roundRegister.setTotalPerPersonTips(new BigDecimal(cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTALPERPERSONTIP))));
         }
+        db.close();
         return roundRegister;
     }
 
@@ -133,6 +136,7 @@ public class RoundRegisterDAO {
         if(cursor.moveToFirst()){
             lastId = cursor.getInt(0);
         }
+        db.close();
         return lastId;
     }
 

@@ -51,6 +51,10 @@
     <string name="total_round">Total</string>
     <string name="save_round">Salvar Rodada</string>
     <string name="bt_ok">OK</string>
-
-
+    <string name="invalid_round">Por favor, verifique que o nome do estabelecimento, a quantidade de pessoas e as despesas foram cadastradas para ver o total</string>
+    <string name="qtde_produto_invalido">Por favor informe a quantidade</string>
+    <string name="valor_unitario_invalido">Por favor informe o preço unitário</string>
+    <string name="nome_despesa_invalido">Por favor informe o nome da despesa</string>
+    <string name="invalid_local_name">Por favor informe um nome</string>
+    <string name="invalid_number_people">Por favor informe a quantidade de pessoas para dividir</string>
 </resources>
