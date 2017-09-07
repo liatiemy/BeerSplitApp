@@ -55,7 +55,6 @@ public class BeerMapActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beer_map);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -83,22 +82,38 @@ public class BeerMapActivity extends FragmentActivity
                 startActivity(intent);
             }
         };
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
 
             return;
         }
 
-        service.requestLocationUpdates(service.GPS_PROVIDER, 1000, 100, mlocatioLocationListener);
+        service.requestLocationUpdates(service.GPS_PROVIDER, 1000, 0, mlocatioLocationListener);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMyLocationEnabled(true);
 
+        //TODO re
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        mMap.clear();
+        //TODO re
+
+        mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
+                mMap.clear(); //TODO re
+
                 Criteria criteria = new Criteria();
                 String provider = service.getBestProvider(criteria, false);
 
@@ -137,8 +152,6 @@ public class BeerMapActivity extends FragmentActivity
                     }
                 });
 
-
-
                 return true;
             }
         });
@@ -175,11 +188,16 @@ public class BeerMapActivity extends FragmentActivity
     @Override
     protected void onStart() {
         super.onStart();
+        if (mGoogleApiClient != null)
+            mGoogleApiClient.connect();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
         service.removeUpdates(mlocatioLocationListener);
     }
 
