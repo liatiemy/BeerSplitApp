@@ -1,8 +1,10 @@
 package tiemy.android.br.com.beersplitapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -18,6 +20,7 @@ import tiemy.android.br.com.beersplitapp.adapter.ExpenseAdapter;
 import tiemy.android.br.com.beersplitapp.adapter.LinhaAdapter;
 import tiemy.android.br.com.beersplitapp.api.OnExpenseClickListener;
 import tiemy.android.br.com.beersplitapp.api.OnItemClickListenter;
+import tiemy.android.br.com.beersplitapp.api.OnLongClickListener;
 import tiemy.android.br.com.beersplitapp.dao.ExpenseDAO;
 import tiemy.android.br.com.beersplitapp.model.Expense;
 import tiemy.android.br.com.beersplitapp.model.RoundRegister;
@@ -63,7 +66,7 @@ public class ExpensesActivity extends AppCompatActivity {
         expenseAdapter = new ExpenseAdapter(new ArrayList<Expense>(), new OnExpenseClickListener(){
             @Override
             public void onItemClick(Expense expense) {
-                Toast.makeText(getApplicationContext(), expense.getNameExpense().toUpperCase(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), expense.getNameExpense().toUpperCase(), Toast.LENGTH_SHORT).show();
                 expense = expenseDAO.getByExpense(expense.getNameExpense());
                 Intent intent = new Intent(getApplicationContext(), ExpenseUpdateActivity.class);
                 intent.putExtra("id", expense.getId_round());
@@ -72,6 +75,13 @@ public class ExpensesActivity extends AppCompatActivity {
                 intent.putExtra("price", expense.getPrice());
                 startActivityForResult(intent, REQUEST_UPDATE);
             }
+
+            @Override
+            public void onLongClick(Expense expense) {
+                confirmaDelecao(expense);
+            }
+
+
         });
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -101,5 +111,24 @@ public class ExpensesActivity extends AppCompatActivity {
                 carregaDados();
             }
         //}
+    }
+
+    private void confirmaDelecao(final Expense expense){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ExpensesActivity.this);
+        builder.setMessage(getString(R.string.confirma_delecao) + "\n" + "\n" + expense.getNameExpense())
+                .setPositiveButton(R.string.yes_delete, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        expenseDAO.delete(expense);
+                        carregaDados();
+                    }
+                })
+                .setNegativeButton(R.string.dont_delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        builder.create().show();
     }
 }

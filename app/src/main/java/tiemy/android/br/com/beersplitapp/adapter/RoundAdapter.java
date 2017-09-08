@@ -48,6 +48,15 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.LinhaViewHol
                 listener.onItemClick(rounds.get(position));
             }
         });
+
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listener.onLongClick(rounds.get(position));
+                return true;
+            }
+        });
     }
 
     @Override

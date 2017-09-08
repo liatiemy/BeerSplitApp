@@ -22,7 +22,6 @@ public class RoundRegisterDAO {
     }
 
     public static final String TABLE_ROUND = "rounds";
-    public static final String COLUMN_ROWID = "rowid";
     public static final String COLUMN_ID_ROUND = "id_round";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_PEOPLE = "people";
@@ -46,7 +45,6 @@ public class RoundRegisterDAO {
 
         result = db.insert(TABLE_ROUND, null, cv);
 
-        db.close();
 
         if(result == -1)
             return "Erro ao inserir rodada";
@@ -149,7 +147,6 @@ public class RoundRegisterDAO {
         where = COLUMN_ID_ROUND + " = " + id_round;
         result = db.delete(TABLE_ROUND, where, null);
 
-        db.close();
 
         if(result == -1)
             return "Erro ao apagar rodada";

@@ -57,4 +57,7 @@
     <string name="nome_despesa_invalido">Por favor informe o nome da despesa</string>
     <string name="invalid_local_name">Por favor informe um nome</string>
     <string name="invalid_number_people">Por favor informe a quantidade de pessoas para dividir</string>
+    <string name="confirma_delecao">Tem certeza de que quer apagar?</string>
+    <string name="yes_delete">Pode apagar</string>
+    <string name="dont_delete">Não apague</string>
 </resources>

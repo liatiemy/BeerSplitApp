@@ -2,9 +2,8 @@ package tiemy.android.br.com.beersplitapp.api;
 
 import tiemy.android.br.com.beersplitapp.model.Expense;
 
-public interface OnExpenseClickListener {
-
-    void onItemClick(Expense expense);
+public interface OnLongClickListener {
 
     void onLongClick(Expense expense);
+
 }

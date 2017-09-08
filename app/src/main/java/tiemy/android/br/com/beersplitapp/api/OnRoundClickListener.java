@@ -6,4 +6,6 @@ public interface OnRoundClickListener {
 
     void onItemClick(RoundRegister roundRegister);
 
+    void onLongClick(RoundRegister roundRegister);
+
 }

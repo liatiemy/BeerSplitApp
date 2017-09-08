@@ -65,5 +65,7 @@
     <string name="nome_despesa_invalido">Please insert a name</string>
     <string name="invalid_local_name">Please insert a name</string>
     <string name="invalid_number_people">Please insert number of people to share</string>
-
+    <string name="confirma_delecao">Are you sure you want to delete?</string>
+    <string name="yes_delete">Yes, delete.</string>
+    <string name="dont_delete">No, do not delete</string>
 </resources>

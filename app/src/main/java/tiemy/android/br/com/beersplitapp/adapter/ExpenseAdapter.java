@@ -13,6 +13,7 @@ import java.util.List;
 
 import tiemy.android.br.com.beersplitapp.R;
 import tiemy.android.br.com.beersplitapp.api.OnExpenseClickListener;
+import tiemy.android.br.com.beersplitapp.api.OnLongClickListener;
 import tiemy.android.br.com.beersplitapp.model.Expense;
 
 
@@ -26,9 +27,6 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.LinhaVie
         this.listener = listener;
     }
 
-    public ExpenseAdapter(List<Expense> expenses){
-        this.expenses = expenses;
-    }
 
     @Override
     public ExpenseAdapter.LinhaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,6 +48,15 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.LinhaVie
             @Override
             public void onClick(View v) {
                 listener.onItemClick(expenses.get(position));
+            }
+
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listener.onLongClick(expenses.get(position));
+                return true;
             }
         });
 

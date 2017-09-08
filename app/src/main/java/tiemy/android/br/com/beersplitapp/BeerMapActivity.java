@@ -97,7 +97,6 @@ public class BeerMapActivity extends FragmentActivity
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //TODO re
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -106,13 +105,12 @@ public class BeerMapActivity extends FragmentActivity
             return;
         }
         mMap.clear();
-        //TODO re
 
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                mMap.clear(); //TODO re
+                mMap.clear();
 
                 Criteria criteria = new Criteria();
                 String provider = service.getBestProvider(criteria, false);

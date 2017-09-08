@@ -78,7 +78,6 @@ public class ExpenseDAO {
                 + COLUMN_ID_ROUND + " = " + expense.getId_round();
         result = db.delete(TABLE_EXPENSE, where, null);
 
-        db.close();
 
         if(result == -1)
             return "Erro ao apagar desepesa";
