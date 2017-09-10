@@ -129,7 +129,6 @@ public class TotalActivity extends AppCompatActivity {
         roundRegister.setTotalPerPersonTips(totalPerPersonTips);
 
         String result = roundRegisterDAO.add(roundRegister);
-        //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         if(!result.contains("erro")){
             Intent intent = new Intent();
             intent.putExtra("result", "OK");

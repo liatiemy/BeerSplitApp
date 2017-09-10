@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/layout_width"
+        android:layout_height="@dimen/layout_height"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:srcCompat="@drawable/beersplit" />
 

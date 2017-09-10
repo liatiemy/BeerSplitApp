@@ -36,7 +36,6 @@ public class RoundActivity extends AppCompatActivity {
     private ExpenseDAO expenseDAO = new ExpenseDAO(this);
     private RoundRegisterDAO roundRegisterDAO = new RoundRegisterDAO(this);
     private RoundRegister roundRegister;
-    private Expense expense;
     List<Expense> itens = new ArrayList<Expense>();
 
     TextView tvPlaceTitle;
@@ -83,7 +82,6 @@ public class RoundActivity extends AppCompatActivity {
         recyclerView.setAdapter(totalAdapter);
         recyclerView.setHasFixedSize(true);
 
-        //Para inserir as linhas
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
@@ -115,17 +113,9 @@ public class RoundActivity extends AppCompatActivity {
                 message = montaCorpoEmail();
                 subject = roundRegister.getName().toString();
 
-//                Intent email = new Intent(Intent.ACTION_SEND);
-//                email.putExtra(Intent.EXTRA_SUBJECT, subject);
-//                email.putExtra(Intent.EXTRA_TEXT, message);
-//                email.setType("message/rfc822");
-//                startActivity(Intent.createChooser(email, "Choose an Email client :"));
-//                finish();
-
-
                 Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);// envio dos dados para o compartilhamento padrao do android
-                sendIntent.setType("*/*");// define extenção do arquivo .. esta para aceitar todas as extenções
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.setType("*/*");
 
 
                 File f = new File(Environment.getExternalStorageDirectory() + File.separator + roundRegister.getName().toString()+".txt");
@@ -156,7 +146,6 @@ public class RoundActivity extends AppCompatActivity {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
             ActivityCompat.requestPermissions(this,
                     PERMISSIONS_STORAGE,
                     REQUEST_EXTERNAL_STORAGE);
@@ -175,12 +164,10 @@ public class RoundActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("result", "OK");
                 setResult(Activity.RESULT_OK, intent);
-                //finish();
             }
         }
 
         String result = roundRegisterDAO.delete(roundRegister.getId_round());
-        //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         if (!result.contains("erro")) {
             Intent intent = new Intent();
             intent.putExtra("result", "OK");

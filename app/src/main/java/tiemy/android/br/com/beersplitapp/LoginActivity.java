@@ -103,10 +103,9 @@ public class LoginActivity extends AppCompatActivity {
         usuario.setUsuario(login);
         usuario.setSenha(password);
         if(usuarioDAO.getByUsername(usuario)){
-            //Toast.makeText(this, "Usuário ou senha válidos", Toast.LENGTH_SHORT).show();
             return true;
         }else{
-            Toast.makeText(this, "Usuário ou senha inválidos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.login_invalido), Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -124,7 +123,6 @@ public class LoginActivity extends AppCompatActivity {
     public boolean isConected(){
         SharedPreferences sp = getSharedPreferences(KEY_APP_PREFERENCES, MODE_PRIVATE);
         String login = sp.getString(KEY_LOGIN, "");
-        String password = sp.getString(KEY_PASSWORD, "");
         if(login.equals(""))
             return false;
         else
@@ -163,7 +161,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-        //iniciarApp();
     }
 
 }

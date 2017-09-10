@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="6dp"
+    android:padding="@dimen/padding_small"
     tools:context="tiemy.android.br.com.beersplitapp.TotalActivity">
 <ScrollView
     android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="6dp">
+        android:padding="@dimen/padding_small">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

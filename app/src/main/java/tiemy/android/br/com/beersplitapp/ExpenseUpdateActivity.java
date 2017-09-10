@@ -36,8 +36,6 @@ public class ExpenseUpdateActivity  extends AppCompatActivity {
         expenseName = param.getString("expense");
         price = param.getDouble("price");
 
-        //Toast.makeText(this, "id_round: " + String.valueOf(id_round), Toast.LENGTH_SHORT).show();
-
         etExpenseName = (EditText) findViewById(R.id.etExpenseName);
         etUnitPrice = (EditText) findViewById(R.id.etUnitPrice);
         etQuantityOfProduct = (EditText) findViewById(R.id.etQuantityOfProduct);
@@ -56,13 +54,11 @@ public class ExpenseUpdateActivity  extends AppCompatActivity {
 
         expense = expenseDAO.getByExpense(expenseName);
 
-        //expense.setId_round(id_round);
         expense.setNameExpense(expenseName);
         expense.setPrice(unitPrice);
         expense.setQuantity(quantityOfProduct);
 
         String result = expenseDAO.update(expenseName, expense);
-        //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         if(!result.contains("erro")){
             Intent intent = new Intent();
             intent.putExtra("result", "OK");
@@ -84,7 +80,6 @@ public class ExpenseUpdateActivity  extends AppCompatActivity {
         expense.setQuantity(quantityOfProduct);
 
         String result = expenseDAO.delete(expense);
-        //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         if(!result.contains("erro")){
             Intent intent = new Intent();
             intent.putExtra("result", "OK");

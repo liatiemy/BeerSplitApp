@@ -32,7 +32,6 @@ public class RoundRegisterActivity extends AppCompatActivity{
     static final int LOCAL_NAME_REQUEST = 1;
     static final int AMOUNT_PEOPLE_REQUEST = 2;
     static final int EXPENSE_REQUEST = 3;
-    static final int TOTAL_REQUEST = 4;
 
     List<String> itens = new ArrayList<String>();
 
@@ -50,7 +49,6 @@ public class RoundRegisterActivity extends AppCompatActivity{
         linhaAdapter = new LinhaAdapter(new ArrayList<String>(), new OnItemClickListenter() {
             @Override
             public void onItemClick(String item) {
-                //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
 
             if(item.contains(getResources().getString(R.string.local_activity))) {
                 Intent intent = new Intent(getApplicationContext(), LocalNameActivity.class);
@@ -84,7 +82,6 @@ public class RoundRegisterActivity extends AppCompatActivity{
         recyclerView.setAdapter(linhaAdapter);
         recyclerView.setHasFixedSize(true);
 
-        //Para inserir as linhas
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
@@ -130,7 +127,6 @@ public class RoundRegisterActivity extends AppCompatActivity{
         if (requestCode == LOCAL_NAME_REQUEST) {
             if (resultCode == RESULT_OK) {
                 roundRegister.setName(data.getStringExtra("localName").toString());
-                //Toast.makeText(this, "localName: " + roundRegister.getName(), Toast.LENGTH_SHORT).show();
                 itens.set(0, getResources().getString(R.string.local_activity)+": "+data.getStringExtra("localName").toString());
                 linhaAdapter.update(itens);
             }
@@ -138,16 +134,12 @@ public class RoundRegisterActivity extends AppCompatActivity{
         if (requestCode == AMOUNT_PEOPLE_REQUEST) {
             if (resultCode == RESULT_OK) {
                 roundRegister.setPeople(new BigDecimal(data.getStringExtra("numberPeople")));
-                //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
                 itens.set(1, getResources().getString(R.string.amount_of_people)+": "+data.getStringExtra("numberPeople").toString());
                 linhaAdapter.update(itens);
             }
         }
         if (requestCode == EXPENSE_REQUEST) {
-            //if (resultCode == RESULT_OK) {
-                roundRegister.setExpenses(expenseDAO.getAll(roundRegister.getId_round()));
-                //Toast.makeText(this, "numberPeople: " + String.valueOf(roundRegister.getPeople()), Toast.LENGTH_SHORT).show();
-            //}
+            roundRegister.setExpenses(expenseDAO.getAll(roundRegister.getId_round()));
         }
     }
 }

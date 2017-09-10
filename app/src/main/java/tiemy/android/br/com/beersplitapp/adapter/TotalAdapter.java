@@ -31,13 +31,11 @@ public class TotalAdapter extends RecyclerView.Adapter<TotalAdapter.LinhaViewHol
     public LinhaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        //false eh apenas para inflar, mas ainda nao tem nada para renderizar/aparecer
         View meuLayout = inflater.inflate(R.layout.row_total, parent, false);
 
         return new TotalAdapter.LinhaViewHolder(meuLayout);
     }
 
-    //associacao do valor com o item da tela
     @Override
     public void onBindViewHolder(LinhaViewHolder holder, final int position) {
 

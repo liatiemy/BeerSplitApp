@@ -25,7 +25,6 @@ import tiemy.android.br.com.beersplitapp.model.Usuario;
 
 public class SplashScreen extends AppCompatActivity {
 
-    //Tempo que nosso splashscreen ficará visivel
     private final int SPLASH_DISPLAY_LENGTH = 3500;
 
     UsuarioDAO usuarioDAO = new UsuarioDAO(this);
@@ -42,12 +41,10 @@ public class SplashScreen extends AppCompatActivity {
         stetho();
 
         final UsuarioAPI usuarioAPI = APIUtils.getUsuarioAPIService();
-        //enqueue é do retrofit2 para não deixar na thread principal
         usuarioAPI.getUsuario().enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.isSuccessful()) {
-                    //Log.i("Usuario: ", response.body().getUsuario());
                     usuario = response.body();
                     if(usuarioDAO.naoExisteUsuarioCadastrado())
                         usuarioDAO.add(usuario);
@@ -65,15 +62,10 @@ public class SplashScreen extends AppCompatActivity {
 
     private void stetho() {
         Context context = getBaseContext();
-        // Create an InitializerBuilder
         Stetho.InitializerBuilder initializerBuilder = Stetho.newInitializerBuilder(this);
-        // Enable Chrome DevTools
         initializerBuilder.enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this));
-        // Enable command line interface
         initializerBuilder.enableDumpapp(Stetho.defaultDumperPluginsProvider(context));
-        // Use the InitializerBuilder to generate an Initializer
         Stetho.Initializer initializer = initializerBuilder.build();
-        // Initialize Stetho with the Initializer
         Stetho.initialize(initializer);
     }
 
@@ -91,7 +83,6 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Após o tempo definido irá executar a próxima tela
                 Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);

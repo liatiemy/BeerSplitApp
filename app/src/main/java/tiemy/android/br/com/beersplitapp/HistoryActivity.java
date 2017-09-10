@@ -67,7 +67,6 @@ public class HistoryActivity extends AppCompatActivity {
         recyclerView.setAdapter(roundAdapter);
         recyclerView.setHasFixedSize(true);
 
-        //Para inserir as linhas
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 

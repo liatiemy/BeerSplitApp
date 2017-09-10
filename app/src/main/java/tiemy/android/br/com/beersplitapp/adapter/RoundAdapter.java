@@ -30,13 +30,11 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.LinhaViewHol
     public LinhaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        //false eh apenas para inflar, mas ainda nao tem nada para renderizar/aparecer
         View meuLayout = inflater.inflate(R.layout.row_round_history, parent, false);
 
         return new RoundAdapter.LinhaViewHolder(meuLayout);
     }
 
-    //associacao do valor com o item da tela
     @Override
     public void onBindViewHolder(RoundAdapter.LinhaViewHolder holder, final int position) {
 

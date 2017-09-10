@@ -29,7 +29,6 @@ public class ExpenseActivity extends AppCompatActivity {
 
         Bundle param = getIntent().getExtras();
         id_round = Integer.parseInt(param.getString("id_round"));
-        //Toast.makeText(this, "id_round: " + String.valueOf(id_round), Toast.LENGTH_SHORT).show();
 
         etExpenseName = (EditText) findViewById(R.id.etExpenseName);
         etUnitPrice = (EditText) findViewById(R.id.etUnitPrice);
@@ -66,7 +65,6 @@ public class ExpenseActivity extends AppCompatActivity {
             expense.setQuantity(quantityOfProduct);
 
             String result = expenseDAO.add(expense);
-            //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
             if (!result.contains("erro")) {
                 Intent intent = new Intent();
                 intent.putExtra("result", "OK");
@@ -89,7 +87,6 @@ public class ExpenseActivity extends AppCompatActivity {
         expense.setQuantity(quantityOfProduct);
 
         String result = expenseDAO.delete(expense);
-        //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         if(!result.contains("erro")){
             Intent intent = new Intent();
             intent.putExtra("result", "OK");

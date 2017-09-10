@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="6dp"
+    android:padding="@dimen/padding_small"
     tools:context="tiemy.android.br.com.beersplitapp.LigacaoActivity">
 
 
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:paddingTop="90dp"
+        android:paddingTop="@dimen/padding_top"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:text="@string/invite">

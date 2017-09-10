@@ -11,19 +11,14 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tiemy.android.br.com.beersplitapp.adapter.ExpenseAdapter;
-import tiemy.android.br.com.beersplitapp.adapter.LinhaAdapter;
 import tiemy.android.br.com.beersplitapp.api.OnExpenseClickListener;
-import tiemy.android.br.com.beersplitapp.api.OnItemClickListenter;
-import tiemy.android.br.com.beersplitapp.api.OnLongClickListener;
 import tiemy.android.br.com.beersplitapp.dao.ExpenseDAO;
 import tiemy.android.br.com.beersplitapp.model.Expense;
-import tiemy.android.br.com.beersplitapp.model.RoundRegister;
 
 public class ExpensesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -33,7 +28,6 @@ public class ExpensesActivity extends AppCompatActivity {
 
 
     private ExpenseDAO expenseDAO = new ExpenseDAO(this);
-    private Expense expense;
 
     List<Expense> itens = new ArrayList<Expense>();
 
@@ -47,7 +41,6 @@ public class ExpensesActivity extends AppCompatActivity {
         Bundle param = getIntent().getExtras();
         final String id_round = param.getString("id_round");
         id = Integer.parseInt(id_round);
-        //Toast.makeText(this, "id_round: " + id_round, Toast.LENGTH_SHORT).show();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +59,6 @@ public class ExpensesActivity extends AppCompatActivity {
         expenseAdapter = new ExpenseAdapter(new ArrayList<Expense>(), new OnExpenseClickListener(){
             @Override
             public void onItemClick(Expense expense) {
-                //Toast.makeText(getApplicationContext(), expense.getNameExpense().toUpperCase(), Toast.LENGTH_SHORT).show();
                 expense = expenseDAO.getByExpense(expense.getNameExpense());
                 Intent intent = new Intent(getApplicationContext(), ExpenseUpdateActivity.class);
                 intent.putExtra("id", expense.getId_round());
@@ -89,7 +81,6 @@ public class ExpensesActivity extends AppCompatActivity {
         recyclerView.setAdapter(expenseAdapter);
         recyclerView.setHasFixedSize(true);
 
-        //Para inserir as linhas
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 

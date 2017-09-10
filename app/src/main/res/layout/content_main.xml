@@ -8,7 +8,7 @@
     tools:context="tiemy.android.br.com.beersplitapp.MenuActivity"
     tools:showIn="@layout/app_bar_main"
     android:orientation="vertical"
-    android:padding="6dp">
+    android:padding="@dimen/padding_small">
 
     <ImageView
         android:layout_gravity="center"

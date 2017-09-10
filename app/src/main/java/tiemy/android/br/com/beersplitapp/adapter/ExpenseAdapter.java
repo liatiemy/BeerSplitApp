@@ -13,7 +13,6 @@ import java.util.List;
 
 import tiemy.android.br.com.beersplitapp.R;
 import tiemy.android.br.com.beersplitapp.api.OnExpenseClickListener;
-import tiemy.android.br.com.beersplitapp.api.OnLongClickListener;
 import tiemy.android.br.com.beersplitapp.model.Expense;
 
 
@@ -32,13 +31,11 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.LinhaVie
     public ExpenseAdapter.LinhaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        //false eh apenas para inflar, mas ainda nao tem nada para renderizar/aparecer
         View meuLayout = inflater.inflate(R.layout.row_expense, parent, false);
 
         return new ExpenseAdapter.LinhaViewHolder(meuLayout);
     }
 
-    //associacao do valor com o item da tela
     @Override
     public void onBindViewHolder(LinhaViewHolder holder, final int position) {
 
@@ -63,7 +60,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.LinhaVie
         Picasso.with(holder.itemView.getContext())
                 .load(R.drawable.ic_greater)
                 .placeholder(R.drawable.ic_greater)
-                .error(R.mipmap.ic_launcher) //em caso de erro ao acessar a imagem pela url
+                .error(R.mipmap.ic_launcher)
                 .into(holder.ivLogo);
 
 
