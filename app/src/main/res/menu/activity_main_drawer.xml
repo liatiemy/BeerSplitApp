@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/round_register"
+            android:icon="@mipmap/ic_round_register"
+            android:title="@string/round_register" />
+        <item
+            android:id="@+id/history"
+            android:icon="@mipmap/ic_list"
+            android:title="@string/history" />
+        <item
+            android:id="@+id/beer_map"
+            android:icon="@mipmap/ic_map"
+            android:title="@string/beer_map" />
+        <item
+            android:id="@+id/log_out"
+            android:icon="@mipmap/ic_exit"
+            android:title="@string/log_out" />
+    </group>
+
+</menu>

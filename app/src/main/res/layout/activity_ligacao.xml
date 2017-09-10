@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small"
+    tools:context="tiemy.android.br.com.beersplitapp.LigacaoActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:paddingTop="@dimen/padding_top"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:text="@string/invite">
+
+        <requestFocus/>
+    </TextView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/etTelefone"
+        android:inputType="number"
+        android:ems="10"
+        android:hint="@string/telefone">
+
+    </EditText>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btLigar"
+        android:text="@string/call"
+        android:layout_gravity="center"
+        android:textAlignment="center"/>
+
+</LinearLayout>

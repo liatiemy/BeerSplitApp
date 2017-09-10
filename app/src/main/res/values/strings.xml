@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Beer Split</string>
+    <string name="hint_login">Insert your login</string>
+    <string name="password">Password</string>
+    <string name="hint_senha">Insert your password</string>
+    <string name="log_in">Log in</string>
+    <string name="manter_conectado">Keep me conected</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">About</string>
+
+    <string name="facebook_app_id">475406189494034</string>
+    <string name="fb_login_protocol_scheme">fb475406189494034</string>
+
+    <string name="title_activity_beer_map">Beer Split Map</string>
+
+    <string name="main">The best way to split the bill equally with your friends at a bar, pub or restaurant.
+        \n Keep informing your expenses and do not be surprise at the end with bill.
+        \n And yet, your bill will be split with and without tax service
+        \n \n Do not miss it! Start your own Round registry right away!</string>
+
+    <string name="developed_by">Developed by Marília Tiemy Matrubashi</string>
+
+    <string name="version">Version 1.0</string>
+
+    <string name="local_activity">Local Name</string>
+    <string name="history_activity">Beer Split History</string>
+    <string name="total_activity">Beer Split Total</string>
+    <string name="place_name">Place:</string>
+    <string name="number_people">Number of people:</string>
+    <string name="total">Total:</string>
+    <string name="total_tips">Total with tips:</string>
+    <string name="split_bill">Total per person:</string>
+    <string name="split_bill_tips">Total per person with tips:</string>
+    <string name="delete_button">Delete Round</string>
+    <string name="feito_por">by Tiemy</string>
+    <string name="round_register">Registry round</string>
+    <string name="save_round">Save Round</string>
+    <string name="hint_place_name">What is the name of the place?</string>
+    <string name="bt_ok">OK</string>
+    <string name="expense_name">Name of expense:</string>
+    <string name="hint_expense">Beer/fries/chicken...</string>
+    <string name="unit_price">Unit price</string>
+    <string name="hint_unit_price">10,00 (Price of one beer)</string>
+    <string name="quantity_expense">How many you order it?</string>
+    <string name="hint_quantity">3 (number of beers ordered)</string>
+    <string name="save">Save</string>
+    <string name="discart">Discart</string>
+    <string name="empty_list">You still do not have a round register.
+        \n Let us start your first now!</string>
+    <string name="amount_people">How many people are going to split the bill?</string>
+    <string name="call">Call</string>
+    <string name="telefone">99999999999</string>
+    <string name="invite">Invite your friends to share great moments</string>
+    <string name="history">History</string>
+    <string name="beer_map">Map</string>
+    <string name="log_out">Log out</string>
+    <string name="amount_of_people">Amount of people</string>
+    <string name="expenses">Expenses</string>
+    <string name="total_round">Total</string>
+    <string name="invalid_round">Please, make sure you had inserted a local name, amount of people and expenses to see total account</string>
+    <string name="qtde_produto_invalido">Please insert a quantity</string>
+    <string name="valor_unitario_invalido">Please insert a price</string>
+    <string name="nome_despesa_invalido">Please insert a name</string>
+    <string name="invalid_local_name">Please insert a name</string>
+    <string name="invalid_number_people">Please insert number of people to share</string>
+    <string name="confirma_delecao">Are you sure you want to delete?</string>
+    <string name="yes_delete">Yes, delete.</string>
+    <string name="dont_delete">No, do not delete</string>
+    <string name="login_invalido">User or password invalid</string>
+</resources>

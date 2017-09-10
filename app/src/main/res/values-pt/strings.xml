@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Beer Split</string>
+    <string name="action_settings">Sobre</string>
+    <string name="hint_login">Informe o login</string>
+    <string name="hint_senha">Informe a senha</string>
+    <string name="log_in">Logar</string>
+    <string name="manter_conectado">Mantenha-me conectado</string>
+    <string name="password">Senha</string>
+    <string name="title_activity_beer_map">Mapa Beer Split</string>
+
+    <string name="main">A melhor forma de dividir a conta com seus amigos em um bar, pub ou restaurante.
+    \n Vá informando seus gastos e não tenha nenhuma surpresa com a conta.
+    \n E ainda, sua conta será dividida entre seus amigos com e sem serviço.
+    \n \n Não perca essa oportunidade! Comece agora sua rodada!</string>
+
+    <string name="developed_by">Desenvolvido por Marília Tiemy Matrubashi</string>
+
+    <string name="version">Versão 1.0</string>
+
+    <string name="local_activity">Nome do estabelecimento</string>
+    <string name="history_activity">Beer Split Histórico</string>
+    <string name="total_activity">Beer Split Total</string>
+    <string name="place_name">Estabelecimento:</string>
+    <string name="number_people">Quantidade de pessoas:</string>
+    <string name="total">Total:</string>
+    <string name="total_tips">Total com serviço:</string>
+    <string name="split_bill">Total por pessoa:</string>
+    <string name="split_bill_tips">Total por pessoa com serviço:</string>
+    <string name="delete_button">Apagar rodada</string>
+    <string name="feito_por">de Tiemy</string>
+    <string name="round_register">Registrar rodada</string>
+    <string name="hint_place_name">Qual é o nome do estabelecimento?</string>
+    <string name="expense_name">Nome do produto:</string>
+    <string name="hint_expense">Cerveja/Fritas/Frango...</string>
+    <string name="unit_price">Preço unitário</string>
+    <string name="hint_unit_price">10,00 (Preço de uma cerveja)</string>
+    <string name="quantity_expense">Qual a quantitdade do produto?</string>
+    <string name="hint_quantity">3 (quantidade de cervejas pedidas)</string>
+    <string name="save">Salvar</string>
+    <string name="discart">Apagar</string>
+    <string name="empty_list">Você não possui nenhuma rodada.
+        \n Vamos começar sua primeira rodada agora!</string>
+    <string name="amount_people">Quantas pessoas irão dividr a conta?</string>
+    <string name="call">Ligar</string>
+    <string name="invite">Convide seus amigos para compartilhar ótimos momentos</string>
+    <string name="history">Histórico</string>
+    <string name="beer_map">Mapa</string>
+    <string name="log_out">Sair</string>
+    <string name="amount_of_people">Quantidade de pessoas</string>
+    <string name="expenses">Despesas</string>
+    <string name="total_round">Total</string>
+    <string name="save_round">Salvar Rodada</string>
+    <string name="bt_ok">OK</string>
+    <string name="invalid_round">Por favor, verifique que o nome do estabelecimento, a quantidade de pessoas e as despesas foram cadastradas para ver o total</string>
+    <string name="qtde_produto_invalido">Por favor informe a quantidade</string>
+    <string name="valor_unitario_invalido">Por favor informe o preço unitário</string>
+    <string name="nome_despesa_invalido">Por favor informe o nome da despesa</string>
+    <string name="invalid_local_name">Por favor informe um nome</string>
+    <string name="invalid_number_people">Por favor informe a quantidade de pessoas para dividir</string>
+    <string name="confirma_delecao">Tem certeza de que quer apagar?</string>
+    <string name="yes_delete">Pode apagar</string>
+    <string name="dont_delete">Não apague</string>
+    <string name="login_invalido">Usuário ou senha inválidos</string>
+</resources>

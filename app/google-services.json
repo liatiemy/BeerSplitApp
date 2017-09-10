@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "538970640748",
+    "firebase_url": "https://crypto-argon-172200.firebaseio.com",
+    "project_id": "crypto-argon-172200",
+    "storage_bucket": "crypto-argon-172200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538970640748:android:c5797e59da62a69f",
+        "android_client_info": {
+          "package_name": "tiemy.android.br.com.beersplitapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538970640748-8p2hqprvi0d6k08khplus0v89t0df0qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqFPYZHxCkmGDxbAp0EvbLDLjTU49bVVY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
