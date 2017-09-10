@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         login_facebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //Toast.makeText(getApplicationContext(), "login com sucesso FB", Toast.LENGTH_SHORT).show();
                 if (cbConectado.isChecked()) {
                     String login = "userFB";
                     String password = "passFB";
@@ -164,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-
+        //iniciarApp();
     }
 
 }
