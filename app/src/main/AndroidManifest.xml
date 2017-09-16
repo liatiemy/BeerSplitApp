@@ -79,7 +79,6 @@
             android:name=".TotalActivity"
             android:label="@string/total_activity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".EmailActivity" />
         <activity android:name=".LigacaoActivity"></activity>
 
         <service android:name=".firebase.MeuFirebaseMessagingService">
