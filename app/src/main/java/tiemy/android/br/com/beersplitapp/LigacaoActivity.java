@@ -20,26 +20,30 @@ public class LigacaoActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ligacao);
 
-        final Button btLigar = (Button) findViewById(R.id.btLigar);
-        btLigar.setOnClickListener(this);
-    }
-
-    public void onClick(View view){
         ActivityCompat.requestPermissions(
                 this,
                 PERMISSIONS_CALL,
                 1
         );
 
+        final Button btLigar = (Button) findViewById(R.id.btLigar);
+        btLigar.setOnClickListener(this);
+
+
+    }
+
+    public void onClick(View view) {
+
         EditText campoTelefone = (EditText) findViewById(R.id.etTelefone);
         String telefone = campoTelefone.getText().toString();
 
         Uri uri = Uri.parse("tel: " + telefone);
         Intent intent = new Intent(Intent.ACTION_CALL, uri);
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             return;
-        } else {
-            startActivity(intent);
         }
+        startActivity(intent);
+
     }
 }
