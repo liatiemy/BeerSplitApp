@@ -82,6 +82,9 @@ public class BeerMapActivity extends FragmentActivity
                 startActivity(intent);
             }
         };
+        
+        service.requestLocationUpdates(service.GPS_PROVIDER, 1000, 0, mlocatioLocationListener);
+        
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -90,7 +93,6 @@ public class BeerMapActivity extends FragmentActivity
             return;
         }
 
-        service.requestLocationUpdates(service.GPS_PROVIDER, 1000, 0, mlocatioLocationListener);
     }
 
     @Override
